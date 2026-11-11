@@ -2,32 +2,72 @@
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>成交費用試算</title>
 <style>
-body{font-family:-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;background:#f5f6f8;margin:0;padding:20px;color:#222}
-.wrap{max-width:640px;margin:auto}
-h1{font-size:24px;margin:0 0 4px}p.sub{color:#666;margin:0 0 20px}
-.card{background:#fff;border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-h2{font-size:16px;margin:0 0 10px}
+:root{--navy:#0f1f3d;--navy2:#162c55;--gold:#c9a24b;--gold2:#e6c878;--cream:#f8f5ee;--ink:#1c2433;--muted:#6b7385}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Noto Sans CJK TC","Microsoft JhengHei",sans-serif;background:var(--cream);margin:0;color:var(--ink);-webkit-font-smoothing:antialiased}
+.top{background:radial-gradient(120% 90% at 90% 0%,#24407a 0%,rgba(36,64,122,0) 60%),linear-gradient(160deg,var(--navy2),var(--navy));color:#fff;padding:18px 20px 34px}
+.top .in{max-width:640px;margin:auto}
+.back{display:inline-block;margin-bottom:12px;font-size:14px;color:var(--gold2);text-decoration:none}
+.top h1{font-size:26px;margin:0 0 6px;letter-spacing:.08em;font-family:"Noto Serif TC","Noto Serif CJK TC","Songti TC",serif;font-weight:900}
+.top h1::after{content:"";display:block;width:36px;height:2px;background:var(--gold);margin-top:10px}
+.top p.sub{color:rgba(255,255,255,.75);margin:10px 0 0;font-size:14px;line-height:1.6}
+.wrap{max-width:640px;margin:-18px auto 0;padding:0 16px 24px}
+.card{background:#fff;border-radius:16px;padding:20px;margin-bottom:16px;border:1px solid #ece5d3;box-shadow:0 14px 30px -24px rgba(15,31,61,.4)}
+h2{font-size:16px;margin:0 0 12px;color:var(--navy);letter-spacing:.04em;padding-left:10px;border-left:3px solid var(--gold)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 label{display:block;font-size:14px;color:#555;margin-bottom:6px}
-input[type=number],select{width:100%;box-sizing:border-box;padding:10px;font-size:16px;border:1px solid #ccc;border-radius:8px}
+input[type=number],select{width:100%;box-sizing:border-box;padding:10px;font-size:16px;border:1px solid #d6d0c0;border-radius:10px;background:#fff;color:var(--ink);font-family:inherit}
+input:focus,select:focus{outline:2px solid rgba(201,162,75,.5);border-color:var(--gold)}
 .m{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.m div{background:#f0f4ff;border-radius:10px;padding:14px}
-.m b{display:block;font-size:22px;color:#1a4fd8}.m span{font-size:13px;color:#555}
+.m div{background:linear-gradient(160deg,var(--navy2),var(--navy));border-radius:12px;padding:14px}
+.m b{display:block;font-size:22px;color:var(--gold2)}.m span{font-size:13px;color:rgba(255,255,255,.75)}
 .m .wide{grid-column:1/-1}
-.hint{font-size:13px;color:#666;margin:0 0 12px;line-height:1.55}
-.used{font-size:13px;color:#555;background:#f7f8fa;border-radius:8px;padding:10px 12px;margin-top:12px;line-height:1.55}
+.hint{font-size:13px;color:var(--muted);margin:0 0 12px;line-height:1.55}
+.used{font-size:13px;color:#555;background:#f7f5ef;border-radius:10px;padding:10px 12px;margin-top:12px;line-height:1.6}
+.region{font-size:13px;color:var(--navy);background:#fbf6e8;border:1px solid #efe2bd;border-radius:10px;padding:10px 12px;margin-top:12px;line-height:1.6}
+.estTag{display:inline-block;background:#fbf1d6;color:#7a5b00;border:1px solid #ecd9a0;border-radius:999px;padding:3px 12px;font-size:12.5px;margin-bottom:12px}
 .chk{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:14px;color:#333}
-.chk input{width:auto;accent-color:#1a4fd8}
+.chk input{width:auto;accent-color:var(--gold)}
 .badge{display:inline-block;background:#fff3cd;color:#7a5b00;border-radius:4px;padding:0 6px;font-size:12px;margin-left:4px;vertical-align:middle}
 table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid #eee;text-align:right}th:first-child,td:first-child{text-align:left}
+th{color:var(--navy)}
 td.desc,th.desc{text-align:left;color:#888;font-size:13px;font-weight:400}
-.tot td{border-bottom:0;font-weight:700}
+.tot td{border-bottom:0;font-weight:700;color:var(--navy)}
 small{color:#888;display:block;margin-top:10px;line-height:1.55}
-.note{background:#eef7ff;border-radius:10px;padding:12px;font-size:14px;margin-top:12px;line-height:1.55}
+.note{background:#f3f5fa;border-radius:10px;padding:12px;font-size:14px;margin-top:12px;line-height:1.55}
+details{margin-top:12px;border-top:1px dashed #e3dcc8;padding-top:10px}
+details summary{cursor:pointer;color:var(--navy);font-weight:600;font-size:14px;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"▸ ";color:var(--gold)}
+details[open] summary::before{content:"▾ "}
+details .body{font-size:13px;color:#555;line-height:1.7;margin-top:8px}
+details .body ul{margin:6px 0;padding-left:18px}
 @media(max-width:480px){.grid,.m{grid-template-columns:1fr}.m .wide{grid-column:auto}}
-</style></head><body><div class="wrap"><a href="./" style="display:inline-block;margin-bottom:10px;font-size:14px;color:#1d4ed8;text-decoration:none">← 回首頁</a>
+</style></head><body><header class="top"><div class="in"><a class="back" href="./">← 回首頁</a>
 <h1>成交費用試算</h1>
-<p class="sub">輸入房屋成交總價，估算買方與賣方各自要繳的仲介費、代書費與其他稅費。</p>
+<p class="sub">選擇物件所在地區、輸入成交總價，估算買方與賣方各自要繳的仲介費、代書費、契稅、土地增值稅與其他規費。</p>
+</div></header>
+<div class="wrap">
+
+<div class="card">
+<h2>物件所在地區</h2>
+<div class="grid">
+<div><label for="city">縣市</label><select id="city"></select></div>
+<div><label for="dist">鄉鎮市區</label><select id="dist"></select></div>
+<div><label for="lvUse">土地增值稅稅率</label><select id="lvUse"><option value="self" selected>自用住宅用地（10%）</option><option value="gen">一般用地（20%～40%）</option></select></div>
+<div><label for="holdYrs">賣方持有年限</label><select id="holdYrs"><option value="2">2 年以內</option><option value="3">約 3 年</option><option value="5" selected>約 5 年</option><option value="8">約 8 年</option><option value="10">約 10 年</option><option value="15">約 15 年</option><option value="20">約 20 年</option><option value="25">約 25 年</option><option value="30">約 30 年</option><option value="40">40 年以上</option></select></div>
+</div>
+<div class="region" id="regionLine"></div>
+<details><summary>估算說明</summary><div class="body">
+契稅、印花稅、登記規費與土地增值稅都不是用成交價計算，而是用政府評定的「房屋評定現值」與「土地公告現值」。本頁依所選地區的一般行情比例估算：
+<ul>
+<li><b>房屋評定現值</b>：約占成交價的比例。竹北、新竹市東區等房價高、以大樓為主的地區比例較低；山區、鄉間透天比例較高。</li>
+<li><b>土地公告現值</b>：約占成交價的比例。公告現值約為土地市價的九成（新竹縣 114 年 90.97%、新竹市 115 年 92.06%），再依地區常見的土地占總價比例換算。</li>
+<li><b>土地增值稅</b>：依地區公告現值的長期平均漲幅，推估賣方取得時的前次移轉現值，扣除物價指數調整後算出漲價數額，再依自用住宅 10% 或一般用地 20%～40%（持有逾 20 年另有減徵）計算。</li>
+<li>未計入房屋稅、地價稅的交屋分算，以及土地改良費、工程受益費等可扣除項目。</li>
+</ul>
+自用住宅稅率須符合面積（都市土地 3 公畝內）、設籍、未出租營業等條件，且有「一生一次／一生一屋」限制。實際金額請以稅單、謄本與地政士試算為準。
+</div></details>
+</div>
 
 <div class="card">
 <h2>成交條件</h2>
@@ -41,19 +81,22 @@ small{color:#888;display:block;margin-top:10px;line-height:1.55}
 
 <div class="card">
 <h2>評定現值與公告現值</h2>
-<p class="hint">契稅、印花稅、登記規費不是用成交價算，而是用房屋評定現值、土地公告現值與申報地價。這三欄可填實際數字（萬元）；留空則依下方比例估列，並會標示為估列。</p>
+<p class="hint" style="margin:0">依上方地區自動估列。手上有稅單或謄本的實際數字時，可展開下方欄位改填。</p>
+<div class="used" id="usedVals"></div>
+<details id="advBox"><summary>已有實際數字／調整估列比例（選填）</summary><div class="body">
+<p class="hint">填入實際數字（萬元）會取代估列值；留空則依地區比例估列。</p>
 <div class="grid">
 <div><label for="houseVal">房屋評定現值（萬元）</label><input id="houseVal" type="number" inputmode="decimal" min="0" step="0.1" placeholder="留空則估列"></div>
 <div><label for="landVal">土地公告現值（萬元）</label><input id="landVal" type="number" inputmode="decimal" min="0" step="0.1" placeholder="留空則估列"></div>
 <div><label for="declVal">土地申報地價（萬元）</label><input id="declVal" type="number" inputmode="decimal" min="0" step="0.1" placeholder="留空則估列"></div>
 </div>
-<p class="hint" style="margin:14px 0 10px">留空時的估列比例（可改）</p>
+<p class="hint" style="margin:14px 0 10px">估列比例（切換地區時會自動帶入該區預設值）</p>
 <div class="grid">
-<div><label for="housePct">評定現值估列（占成交價 %）</label><input id="housePct" type="number" inputmode="decimal" min="0" step="0.1" value="8"></div>
-<div><label for="landPct">公告現值估列（占成交價 %）</label><input id="landPct" type="number" inputmode="decimal" min="0" step="0.1" value="20"></div>
+<div><label for="housePct">評定現值估列（占成交價 %）</label><input id="housePct" type="number" inputmode="decimal" min="0" step="0.1" value="7"></div>
+<div><label for="landPct">公告現值估列（占成交價 %）</label><input id="landPct" type="number" inputmode="decimal" min="0" step="0.1" value="25"></div>
 <div><label for="declPct">申報地價估列（占公告現值 %）</label><input id="declPct" type="number" inputmode="decimal" min="0" step="0.1" value="20"></div>
 </div>
-<div class="used" id="usedVals"></div>
+</div></details>
 </div>
 
 <div class="card">
@@ -65,9 +108,9 @@ small{color:#888;display:block;margin-top:10px;line-height:1.55}
 <div><label for="certFee">每張書狀費（元）</label><input id="certFee" type="number" inputmode="decimal" min="0" step="1" value="80"></div>
 <div><label for="copyFee">謄本費（元，買方）</label><input id="copyFee" type="number" inputmode="decimal" min="0" step="20" value="200"></div>
 <div><label for="cancelFee">塗銷登記規費（元，賣方）</label><input id="cancelFee" type="number" inputmode="decimal" min="0" step="1" value="200"></div>
-<div><label for="lvTax">土地增值稅（元，賣方）</label><input id="lvTax" type="number" inputmode="decimal" min="0" step="1" value="0"></div>
+<div><label for="lvTax">土地增值稅（元，賣方）</label><input id="lvTax" type="number" inputmode="decimal" min="0" step="1" placeholder="留空則依地區估算"></div>
 </div>
-<p class="hint" style="margin:12px 0 0">土地增值稅依土地漲價總數額計算，自用住宅用地可申請 10% 優惠稅率，無法用成交價直接估算，故預設 0，請自行填入預估或已核定金額。</p>
+<p class="hint" style="margin:12px 0 0">土地增值稅留空時，依上方地區、稅率與持有年限粗估；已有地政士試算或核定稅額時，直接填入即可取代估算。</p>
 </div>
 
 <div class="card">
@@ -94,6 +137,7 @@ small{color:#888;display:block;margin-top:10px;line-height:1.55}
 </div>
 
 <div class="card">
+<span class="estTag">依地區行情估算，實際以稅單與謄本為準</span>
 <div class="m">
 <div><b id="buyTotal"></b><span>買方應繳</span></div>
 <div><b id="sellTotal"></b><span>賣方應繳</span></div>
@@ -114,9 +158,65 @@ small{color:#888;display:block;margin-top:10px;line-height:1.55}
 
 <div class="card">
 <div class="note">賣方另可能需申報房地合一稅（或舊制財產交易所得稅）。稅額取決於取得成本、持有期間與適用稅率，本表不試算，請向國稅局或地政士確認。</div>
-<small>本試算僅供參考。契稅、印花稅、登記規費實際金額依稅捐稽徵機關與地政事務所核定為準；代書費、仲介費、履約保證費與銀行費用依雙方約定及業者報價為準。請以地政士（代書）提供的費用明細與稅單為最終依據。</small>
+<small>本試算僅供參考，稅費依地區行情比例估算，實際以稅單與謄本為準。契稅、印花稅、登記規費實際金額依稅捐稽徵機關與地政事務所核定為準；代書費、仲介費、履約保證費與銀行費用依雙方約定及業者報價為準。請以地政士（代書）提供的費用明細與稅單為最終依據。</small>
 </div>
 </div>
+<script>
+/* ================= 地區估算假設（僅新竹縣、新竹市） =================
+ * 依據與來源：
+ * 1. 公告土地現值占一般正常交易價格（市價）比例：新竹縣 114 年 90.97%、新竹市 114 年 92.29%
+ *    （內政部統計，政大不動產研究中心彙整 https://rer.nccu.edu.tw/article/detail/2211082555336）；
+ *    新竹市 115 年調整後 92.06%、公告地價占市價 19.56%（新竹市地政處，中央社訊息平台 2025-12-29
+ *    https://www.cna.com.tw/postwrite/chi/422715）。
+ * 2. 新竹縣 115 年公告土地現值平均調漲 2.86%，竹北 3.80%、湖口 3.70%、竹東 2.71% 居前三
+ *    （新竹縣政府 2025-12-23 https://www.hsinchu.gov.tw/News_Content.aspx?n=153&s=278357）；
+ *    新竹市 115 年平均調漲 2.93%（同上中央社訊息平台）。新竹縣 103→107 年公告現值占市價比例由 66.71% 拉高到 90.38%，
+ *    故長期（約 10 年）實際漲幅高於近年單年漲幅，長期年均漲幅 g 取 2.5%～5.5% 的經驗值。
+ * 3. 房屋評定現值＝核定單價×面積×(1－折舊率×年數)×街路等級調整率（新竹縣政府稅務局
+ *    https://www.hsinchu.gov.tw/News_Content.aspx?n=141&s=90658；地段率見 https://www.chutax.gov.tw/News.aspx?n=303&sms=9167）。
+ *    政府未公布「評定現值占成交價」比例，本表 h 值為經驗估計：房價越高、以新大樓為主的區域（竹北、東區）比例越低，
+ *    鄉間、山區透天比例越高。
+ * 4. 土地公告現值占成交價 l ＝ 公告現值占土地市價（約 90%）× 土地價值占總價的常見比例（大樓約 25%～30%、透天約 40%～50%）；經驗估計。
+ * 5. 申報地價 d（占公告現值 %）：新竹市 19.56% ÷ 92.06% ≈ 21%；新竹縣無公開比例，沿用 20%。
+ * 6. 土地增值稅率依土地稅法第 33、34 條：自用住宅 10%；一般用地依漲價倍數 20%／30%／40%，持有逾 20、30、40 年者第二、三級距減徵。
+ * 7. 代書費各區差異不大且無可靠公開統計，維持原預設，不分區調整。
+ * 以上皆為估算，非官方數字；實際以稅單、謄本與地政士試算為準。
+ * 欄位：h=評定現值占成交價%，l=公告現值占成交價%，d=申報地價占公告現值%，g=公告現值長期年均漲幅%，t=物件型態說明
+ */
+const REGIONS={
+'新竹縣':{
+'竹北市':{h:7,l:25,d:20,g:5.5,t:'高鐵特區、縣治一帶新大樓為主，房價高'},
+'竹東鎮':{h:9,l:30,d:20,g:4,t:'大樓與透天兼有，近竹科'},
+'湖口鄉':{h:9,l:30,d:20,g:4.5,t:'新湖口、王爺壟大樓社區多'},
+'新豐鄉':{h:9,l:30,d:20,g:4,t:'大樓社區與透天並存'},
+'寶山鄉':{h:9,l:33,d:20,g:4.5,t:'鄰近竹科，透天、別墅為主'},
+'芎林鄉':{h:10,l:36,d:20,g:3.5,t:'透天為主'},
+'新埔鎮':{h:11,l:38,d:20,g:3,t:'透天為主'},
+'關西鎮':{h:11,l:38,d:20,g:3,t:'透天為主'},
+'橫山鄉':{h:12,l:40,d:20,g:3,t:'鄉間透天、農舍'},
+'北埔鄉':{h:12,l:40,d:20,g:3,t:'鄉間透天、農舍'},
+'峨眉鄉':{h:12,l:40,d:20,g:3,t:'鄉間透天、農舍'},
+'尖石鄉':{h:13,l:38,d:20,g:2.5,t:'山區，交易量少，估算誤差較大'},
+'五峰鄉':{h:13,l:38,d:20,g:2.5,t:'山區，交易量少，估算誤差較大'}
+},
+'新竹市':{
+'東區':{h:7,l:25,d:21,g:5,t:'關埔、光埔、科學園區周邊，新大樓為主，房價高'},
+'北區':{h:8,l:28,d:21,g:4,t:'舊市區與大樓並存'},
+'香山區':{h:9,l:32,d:21,g:4,t:'大樓與透天兼有，房價相對較低'}
+}};
+const CPI_YR=1.2; /* 物價指數年均約 1.2%（假設值，用於調整前次移轉現值） */
+
+/* 土地增值稅（土地稅法第 33、34 條）；base＝前次移轉現值×物價指數，gain＝漲價總數額 */
+function landVATax(gain,base,use,yrs){
+ if(gain<=0||base<=0)return 0;
+ if(use==='self')return gain*0.10;
+ const r=gain/base;
+ if(r<1)return gain*0.20;
+ const t=yrs>40?3:yrs>30?2:yrs>20?1:0;
+ if(r<2)return gain*[.30,.28,.27,.26][t]-base*[.10,.08,.07,.06][t];
+ return gain*[.40,.36,.34,.32][t]-base*[.30,.24,.21,.18][t];
+}
+</script>
 <script>
 const $=id=>document.getElementById(id);
 const val=id=>+$(''+id).value||0;
@@ -146,7 +246,15 @@ const copies=val('copyFee');
 const buyNotary=val('buyNotary');
 const sellNotary=val('sellNotary');
 const cancel=val('cancelFee');
-const lvTax=val('lvTax');
+const R=REGIONS[$('city').value][$('dist').value];
+const yrs=+$('holdYrs').value,use=$('lvUse').value;
+const prev=land/Math.pow(1+R.g/100,yrs);
+const lvBase=prev*Math.pow(1+CPI_YR/100,yrs);
+const lvGain=Math.max(0,land-lvBase);
+const lvTaxEst=landVATax(lvGain,lvBase,use,yrs);
+const lvManual=!blank('lvTax');
+const lvTax=lvManual?val('lvTax'):lvTaxEst;
+$('regionLine').innerHTML=`<b>${$('city').value} ${$('dist').value}</b>：${R.t}。估列房屋評定現值約成交價 ${R.h}%、土地公告現值約 ${R.l}%；公告現值長期年漲幅約 ${R.g}%。`;
 
 let escrow=0,buyEsc=0,sellEsc=0;
 if($('escrowOn').checked){
@@ -198,14 +306,22 @@ $('buyRows').innerHTML=buyRows.join('');
 const sellRows=[
 row('仲介服務費','成交價 × '+val('sellComm')+'%',sellComm,false),
 row('代書費','簽約、抵押權塗銷服務費行情，可改',sellNotary,false),
-row('土地增值稅','依土地漲價總數額，需自行填入',lvTax,false)
+row('土地增值稅',lvManual?'自行填入金額':`漲價數額約 ${w(lvGain)} × ${use==='self'?'自用 10%':'一般稅率'}（持有約 ${yrs} 年）`,lvTax,!lvManual)
 ];
 if($('escrowOn').checked) sellRows.push(row('履約保證費','總費率 '+val('escrowRate')+'%，賣方分攤 '+(100-val('escrowShare'))+'%',sellEsc,false));
 sellRows.push(row('塗銷登記規費','塗銷原抵押權之規費，可改',cancel,false));
 sellRows.push(tot('賣方合計',sell));
 $('sellRows').innerHTML=sellRows.join('');
 }
+const citySel=$('city'),distSel=$('dist');
+citySel.innerHTML=Object.keys(REGIONS).map(c=>`<option>${c}</option>`).join('');
+function fillDist(){distSel.innerHTML=Object.keys(REGIONS[citySel.value]).map(d=>`<option>${d}</option>`).join('');}
+function applyRegion(){const R=REGIONS[citySel.value][distSel.value];$('housePct').value=R.h;$('landPct').value=R.l;$('declPct').value=R.d;calc();}
+citySel.value='新竹縣';fillDist();distSel.value='竹北市';
+citySel.addEventListener('change',()=>{fillDist();applyRegion();});
+distSel.addEventListener('change',applyRegion);
+['lvUse','holdYrs'].forEach(id=>$(id).addEventListener('change',calc));
 document.querySelectorAll('input').forEach(e=>e.addEventListener('input',calc));
 document.querySelectorAll('input[type=checkbox]').forEach(e=>e.addEventListener('change',calc));
-calc();
+applyRegion();
 </script></body></html>
