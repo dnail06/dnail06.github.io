@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>房貸試算</title>
+<style>
+body{font-family:-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;background:#f5f6f8;margin:0;padding:20px;color:#222}
+.wrap{max-width:640px;margin:auto}
+h1{font-size:24px;margin:0 0 4px}p.sub{color:#666;margin:0 0 20px}
+.card{background:#fff;border-radius:14px;padding:20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;font-size:14px;color:#555;margin-bottom:6px}
+input,select{width:100%;box-sizing:border-box;padding:10px;font-size:16px;border:1px solid #ccc;border-radius:8px}
+.m{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.m div{background:#f0f4ff;border-radius:10px;padding:14px}
+.m b{display:block;font-size:22px;color:#1a4fd8}.m span{font-size:13px;color:#555}
+.note{background:#eef7ff;border-radius:10px;padding:12px;font-size:14px;margin-top:12px;display:none}
+table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid #eee;text-align:right}th:first-child,td:first-child{text-align:left}
+small{color:#888}
+@media(max-width:480px){.grid,.m{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<h1>房貸試算</h1><p class="sub">輸入房屋總價，算出貸款金額與每月應繳。</p>
+<div class="card"><div class="grid">
+<div><label>房屋總價（萬元）</label><input id="price" type="number" value="1500"></div>
+<div><label>貸款成數（%）</label><input id="ratio" type="number" value="80"></div>
+<div><label>年利率（%）</label><input id="rate" type="number" step="0.01" value="2.2"></div>
+<div><label>貸款年限</label><select id="years"><option>20</option><option selected>30</option><option>40</option></select></div>
+<div><label>寬限期（年）</label><select id="grace"><option value="0">無</option><option>1</option><option>2</option><option>3</option><option>5</option></select></div>
+</div></div>
+<div class="card"><div class="m">
+<div><b id="loan"></b><span>貸款金額</span></div>
+<div><b id="down"></b><span>頭期款</span></div>
+<div><b id="monthly"></b><span id="mlabel">每月應繳</span></div>
+<div><b id="interest"></b><span>總利息</span></div>
+</div><div class="note" id="note"></div><small>以本息平均攤還計算。</small></div>
+<div class="card"><table><thead><tr><th>年限</th><th>每月應繳</th><th>總利息</th></tr></thead><tbody id="cmp"></tbody></table>
+<small>不含寬限期。實際利率、成數與寬限期依銀行核貸為準。</small></div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const pmt=(p,a,n)=>{if(n<=0)return 0;const r=a/100/12;return r===0?p/n:p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1)};
+const f=n=>Math.round(n).toLocaleString('zh-TW')+' 元';
+const w=n=>(n/10000).toLocaleString('zh-TW',{maximumFractionDigits:1})+' 萬';
+function calc(){
+const total=(+$('price').value||0)*10000,pct=Math.min(Math.max(+$('ratio').value||0,0),100),apr=+$('rate').value||0,y=+$('years').value,g=Math.min(+$('grace').value,y-1);
+const loan=total*pct/100,gm=loan*apr/1200,m=pmt(loan,apr,(y-g)*12),paid=gm*g*12+m*(y-g)*12;
+$('loan').textContent=w(loan);$('down').textContent=w(total-loan);$('monthly').textContent=f(m);$('interest').textContent=w(paid-loan);
+$('mlabel').textContent=g>0?'寬限期後月繳':'每月應繳';
+const n=$('note');if(g>0){n.style.display='block';n.textContent=`寬限期 ${g} 年內只繳利息，每月約 ${f(gm)}；之後每月 ${f(m)}。`}else n.style.display='none';
+$('cmp').innerHTML=[20,30,40].map(yy=>{const mm=pmt(loan,apr,yy*12);return `<tr><td>${yy} 年</td><td>${f(mm)}</td><td>${w(mm*yy*12-loan)}</td></tr>`}).join('');
+}
+document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',calc));calc();
+</script></body></html>
