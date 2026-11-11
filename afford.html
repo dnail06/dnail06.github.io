@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>買房能力試算｜戴毅 永義房屋 竹科展益加盟店</title>
+<meta name="description" content="依家庭收入與自備款，估算您大概買得起多少價位的房子。永義房屋 竹科展益加盟店 戴毅提供免費試算與諮詢。">
+<meta name="theme-color" content="#0f1f3d">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="買房能力試算｜戴毅 永義房屋">
+<meta property="og:description" content="依家庭收入與自備款，估算您大概買得起多少價位的房子。">
+<meta property="og:url" content="https://dnail06.github.io/afford.html">
+<meta property="og:image" content="https://dnail06.github.io/images/portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f1f3d;--navy2:#162c55;--gold:#c9a24b;--gold2:#e6c878;--cream:#f8f5ee;
+  --ink:#1c2433;--muted:#6b7385;--line:#06c755;
+  --ok:#1f7a4d;--okbg:#e8f6ee;--warn:#8a5a00;--warnbg:#fff4dc;--bad:#b42318;--badbg:#fdecea;
+  --serif:"Noto Serif TC","Noto Serif CJK TC","Songti TC",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Noto Sans CJK TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{width:100%;max-width:640px;margin:0 auto;padding:0 16px}
+
+.hero{position:relative;overflow:hidden;color:#fff;padding:18px 0 40px;
+  background:radial-gradient(120% 80% at 85% 10%,#24407a 0%,rgba(36,64,122,0) 55%),linear-gradient(160deg,var(--navy2) 0%,var(--navy) 60%,#0a1630 100%)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,75,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,75,.07) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000 0%,transparent 90%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 90%);pointer-events:none}
+.hero .container{position:relative}
+.back{display:inline-flex;align-items:center;gap:4px;font-size:14px;color:var(--gold2)}
+.back:hover{color:#fff}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:28px;letter-spacing:.08em;margin-top:14px}
+.hero h1::after{content:"";display:block;width:36px;height:2px;background:var(--gold);margin-top:10px}
+.hero .lead{font-size:14.5px;color:rgba(255,255,255,.75);margin-top:10px;line-height:1.6}
+
+.wrap{max-width:640px;margin:-18px auto 0;padding:0 16px 8px}
+.card{background:#fff;border-radius:16px;padding:20px;margin-bottom:16px;border:1px solid #ece5d3;box-shadow:0 14px 30px -24px rgba(15,31,61,.4)}
+h2{font-size:16px;margin:0 0 14px;color:var(--navy);letter-spacing:.04em;padding-left:10px;border-left:3px solid var(--gold)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.span2{grid-column:1/-1}
+label{display:block;font-size:14px;color:#555;margin-bottom:6px}
+input[type=number],select{width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;border:1px solid #d6d0c0;border-radius:10px;background:#fff;color:var(--ink);font-family:inherit;-webkit-appearance:none;appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 16px) 18px,calc(100% - 11px) 18px;background-size:5px 5px;background-repeat:no-repeat;padding-right:32px}
+input:focus,select:focus{outline:2px solid rgba(201,162,75,.5);border-color:var(--gold)}
+.hint{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.55}
+.unit{position:relative}
+.unit input{padding-right:42px}
+.unit i{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-style:normal;font-size:13px;color:var(--muted);pointer-events:none}
+
+.slider{grid-column:1/-1}
+.slider .row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px}
+.slider .val{font-weight:700;color:var(--navy);font-size:16px;letter-spacing:.04em}
+.slider .val em{font-style:normal;color:var(--gold);font-size:13px;font-weight:600;margin-left:6px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:999px;background:#ece5d3;outline:none;margin:8px 0 4px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));border:2px solid #fff;box-shadow:0 2px 8px rgba(15,31,61,.25);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));border:2px solid #fff;box-shadow:0 2px 8px rgba(15,31,61,.25);cursor:pointer}
+.ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);padding:0 2px}
+
+.result{background:linear-gradient(160deg,var(--navy2) 0%,var(--navy) 70%,#0a1630 100%);color:#fff;border:0;position:relative;overflow:hidden;padding:24px 20px 20px}
+.result::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,75,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,75,.08) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(180deg,#000 0%,transparent 80%);pointer-events:none}
+.result>*{position:relative}
+.result .k{font-size:13px;letter-spacing:.16em;color:var(--gold2);font-weight:700}
+.result .big{font-family:var(--serif);font-weight:900;font-size:44px;letter-spacing:.04em;line-height:1.15;margin:6px 0 10px;color:#fff}
+.result .big small{font-size:20px;font-weight:700;margin-left:4px;letter-spacing:.08em}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.tag{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 12px;border-radius:999px;font-size:12.5px;font-weight:700;letter-spacing:.04em}
+.tag-limit{background:rgba(201,162,75,.18);color:var(--gold2);border:1px solid rgba(230,200,120,.35)}
+.tag-ok{background:#1f7a4d;color:#fff}
+.tag-warn{background:#c9a24b;color:var(--navy)}
+.tag-bad{background:#c0392b;color:#fff}
+.explain{font-size:14.5px;color:rgba(255,255,255,.82);line-height:1.7;margin-bottom:4px}
+.explain b{color:var(--gold2);font-weight:700}
+.payline{margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);font-size:14.5px;color:rgba(255,255,255,.88)}
+.payline strong{color:#fff;font-size:18px;letter-spacing:.03em}
+
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.stats div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px}
+.stats b{display:block;font-size:20px;color:var(--gold2);letter-spacing:.02em;font-weight:700}
+.stats span{font-size:12.5px;color:rgba(255,255,255,.65)}
+.stats .wide{grid-column:1/-1}
+.stats .mark{box-shadow:inset 0 0 0 1.5px rgba(230,200,120,.55)}
+
+.note{background:rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;font-size:13.5px;color:rgba(255,255,255,.8);margin-top:14px;line-height:1.65}
+.downbox{background:#fff;border-radius:14px;padding:16px;margin-top:16px;color:var(--ink)}
+.downbox h3{font-size:14px;color:var(--navy);letter-spacing:.06em;margin-bottom:8px}
+.downbox .sum{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--navy);letter-spacing:.04em}
+.downbox .sum small{font-size:14px;font-weight:600;margin-left:2px}
+.downbox ul{margin:8px 0 0;padding-left:18px;font-size:14px;color:#444;line-height:1.7}
+.downbox .gap{margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.6}
+.downbox .gap b{color:var(--navy)}
+
+.warnbox{display:none;background:var(--badbg);color:var(--bad);border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:12px;line-height:1.6}
+.warnbox.show{display:block}
+
+.cta{display:grid;gap:10px;margin-top:4px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;font-size:16px;font-weight:700;letter-spacing:.06em;transition:transform .15s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-navy{background:linear-gradient(150deg,var(--navy2),var(--navy));color:var(--gold2)}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--navy);box-shadow:0 12px 26px -10px rgba(201,162,75,.8)}
+.btn-line{background:var(--line);color:#fff;box-shadow:0 12px 26px -10px rgba(6,199,85,.7)}
+.disclaimer{font-size:13px;color:var(--muted);line-height:1.65;margin:0}
+
+footer{background:var(--navy);color:rgba(255,255,255,.55);padding:30px 0 28px;text-align:center;margin-top:32px}
+footer .fname{color:#fff;font-family:var(--serif);letter-spacing:.14em;font-size:16px}
+footer .fco{font-size:13px;color:var(--gold2);margin-top:2px}
+footer .legal{margin:14px auto 0;font-size:11.5px;line-height:1.9;color:rgba(255,255,255,.5)}
+footer .legal span{display:block}
+
+@media(max-width:480px){
+  .grid,.stats{grid-template-columns:1fr}
+  .stats .wide{grid-column:auto}
+  .result .big{font-size:38px}
+}
+@media(min-width:640px){
+  .hero{padding:24px 0 48px}
+  .hero h1{font-size:34px}
+  .card{padding:24px}
+  .cta{grid-template-columns:1fr 1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <a class="back" href="./">← 回首頁</a>
+    <h1>買房能力試算</h1>
+    <p class="lead">依家庭收入與自備款，估算您大概買得起多少價位的房子。</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <h2>試算條件</h2>
+    <div class="grid">
+      <div>
+        <label for="income">家庭月收入</label>
+        <div class="unit"><input id="income" type="number" inputmode="decimal" min="0" step="0.1" value="10"><i>萬元</i></div>
+        <p class="hint" id="incomeHint"></p>
+      </div>
+      <div>
+        <label for="other">每月其他貸款／固定支出</label>
+        <div class="unit"><input id="other" type="number" inputmode="decimal" min="0" step="100" value="0"><i>元</i></div>
+        <p class="hint">例如車貸、信貸</p>
+      </div>
+      <div>
+        <label for="down">可用自備款</label>
+        <div class="unit"><input id="down" type="number" inputmode="decimal" min="0" step="1" value="300"><i>萬元</i></div>
+      </div>
+      <div>
+        <label for="rate">房貸利率</label>
+        <div class="unit"><input id="rate" type="number" inputmode="decimal" min="0" step="0.01" value="2.8"><i>%</i></div>
+      </div>
+      <div>
+        <label for="years">貸款年限</label>
+        <select id="years">
+          <option value="20">20 年</option>
+          <option value="30" selected>30 年</option>
+          <option value="40">40 年</option>
+        </select>
+      </div>
+      <div>
+        <label for="grace">寬限期</label>
+        <select id="grace">
+          <option value="0" selected>無</option>
+          <option value="1">1 年</option>
+          <option value="2">2 年</option>
+          <option value="3">3 年</option>
+          <option value="4">4 年</option>
+          <option value="5">5 年</option>
+        </select>
+      </div>
+      <div>
+        <label for="ltv">貸款成數</label>
+        <select id="ltv">
+          <option value="0.7">7 成</option>
+          <option value="0.8" selected>8 成</option>
+          <option value="0.85">8 成 5</option>
+        </select>
+      </div>
+      <div class="slider">
+        <div class="row">
+          <label for="dti" style="margin:0">月付占收入比上限</label>
+          <div class="val" id="dtiLabel">33%</div>
+        </div>
+        <input id="dti" type="range" min="20" max="50" step="1" value="33">
+        <div class="ticks"><span>20%</span><span>30%</span><span>40%</span><span>50%</span></div>
+        <p class="hint">一般建議以不超過月收入三分之一為宜；比例越高，每月壓力越大。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card result" id="resultCard">
+    <div class="warnbox" id="warnbox"></div>
+    <div class="k">建議可購屋總價</div>
+    <div class="big" id="price">—<small>萬</small></div>
+    <div class="tags">
+      <span class="tag tag-limit" id="limitTag"></span>
+      <span class="tag" id="safeTag"></span>
+    </div>
+    <p class="explain" id="explain"></p>
+    <div class="payline">以此總價估算，<span id="payLabel">每月房貸約</span> <strong id="sugPay"></strong><br><span id="ratioLine"></span></div>
+    <div class="note" id="graceNote" style="display:none"></div>
+    <div class="stats">
+      <div><b id="affordPay"></b><span>每月可負擔房貸</span></div>
+      <div><b id="maxLoan"></b><span>最高可貸款金額</span></div>
+      <div id="boxIncome"><b id="priceIncome"></b><span>收入可負擔總價（貸款＋自備款）</span></div>
+      <div id="boxDown"><b id="priceDown"></b><span>依自備款可買總價</span></div>
+    </div>
+    <div class="downbox">
+      <h3>購買此總價，建議準備的自備款</h3>
+      <div class="sum" id="needTotal">—<small>萬</small></div>
+      <ul>
+        <li>頭期款（總價扣除貸款）約 <span id="needDown"></span></li>
+        <li>購屋雜費約總價 3%（契稅、代書、仲介等）約 <span id="needFee"></span></li>
+      </ul>
+      <p class="gap" id="needGap"></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="disclaimer">以本息平均攤還計算。試算結果僅供參考，實際貸款條件以銀行核貸為準。購屋雜費為粗估，實際費用請再以成交費用試算或地政士報價為準。</p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn btn-navy" href="loan.html">前往房貸試算</a>
+      <a class="btn btn-gold" href="tel:0917505303">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+        免費諮詢
+      </a>
+      <a class="btn btn-line" href="https://line.me/ti/p/~dnail06" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.3 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
+        加 LINE
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="fname">戴毅</div>
+    <div class="fco">永義房屋 竹科展益加盟店</div>
+    <p class="legal">
+      <span>經紀業特許字號：府地價字第1140175778號</span>
+      <span>營業員：戴 毅 (114)登字第486520號</span>
+      <span>經紀人：黃勤雯 (106)中市經紀字第01777號</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var money=function(n){return Math.round(n).toLocaleString('zh-TW')+' 元'};
+  var wan=function(n){
+    var v=n/10000;
+    var r=Math.abs(v-Math.round(v))<0.05?Math.round(v):Math.round(v*10)/10;
+    return r.toLocaleString('zh-TW',{maximumFractionDigits:1})+' 萬';
+  };
+  var pmt=function(p,apr,n){
+    if(n<=0)return 0;
+    var r=apr/100/12;
+    return r===0?p/n:p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  };
+  var loanFromPmt=function(m,apr,n){
+    if(n<=0||m<=0)return 0;
+    var r=apr/100/12;
+    return r===0?m*n:m*(Math.pow(1+r,n)-1)/(r*Math.pow(1+r,n));
+  };
+  var capRatio=function(){
+    var v=+$('dti').value;
+    return v===33?1/3:v/100;
+  };
+  var num=function(id){var n=+$(''+id).value;return isFinite(n)&&n>0?n:0};
+
+  function calc(){
+    var income=num('income')*10000;
+    var other=Math.max(0,+$('other').value||0);
+    var down=num('down')*10000;
+    var apr=Math.max(0,+$('rate').value||0);
+    var years=+($('years').value)||30;
+    var grace=Math.min(+$('grace').value||0,Math.max(0,years-1));
+    var ltv=+$('ltv').value||0.8;
+    var ratio=capRatio();
+    var dtiPct=+$('dti').value;
+
+    $('dtiLabel').innerHTML=dtiPct+'%'+(dtiPct===33?'<em>約三分之一</em>':'');
+    $('incomeHint').textContent=income>0?('相當於每月 '+Math.round(income).toLocaleString('zh-TW')+' 元'):'';
+
+    var afford=income*ratio-other;
+    if(afford<0)afford=0;
+    var nAfter=(years-grace)*12;
+    var maxLoan=loanFromPmt(afford,apr,nAfter);
+    var priceFromIncome=maxLoan+down;
+    var priceFromDown=ltv<1&&down>0?down/(1-ltv):down;
+    var suggested=0;
+    var limiter='';
+    if(priceFromIncome<=0&&priceFromDown<=0){suggested=0;limiter='none'}
+    else if(priceFromDown<=0){suggested=priceFromIncome;limiter='income'}
+    else if(priceFromIncome<=0){suggested=priceFromDown;limiter='down'}
+    else if(Math.abs(priceFromIncome-priceFromDown)/Math.max(priceFromIncome,priceFromDown)<0.01){
+      suggested=Math.min(priceFromIncome,priceFromDown);limiter='even';
+    }else if(priceFromIncome<priceFromDown){suggested=priceFromIncome;limiter='income'}
+    else{suggested=priceFromDown;limiter='down'}
+
+    var loanUsed=Math.min(maxLoan,suggested*ltv);
+    if(loanUsed<0)loanUsed=0;
+    var downUsed=Math.max(0,suggested-loanUsed);
+    var fee=suggested*0.03;
+    var need=downUsed+fee;
+    var sugPay=pmt(loanUsed,apr,nAfter);
+    var gracePay=loanUsed*apr/1200;
+    var actualRatio=income>0?(sugPay/income):0;
+    var dtiAll=income>0?((sugPay+other)/income):0;
+
+    var warn=$('warnbox');
+    if(income<=0){
+      warn.className='warnbox show';
+      warn.textContent='請先填寫家庭月收入，才能估算可負擔的房貸與總價。';
+    }else if(income*ratio-other<=0){
+      warn.className='warnbox show';
+      warn.textContent='目前的其他貸款與固定支出已達到或超過您設定的月付比例，暫無餘裕再負擔房貸。可先減少支出、調高比例，或與我們討論適合的規劃。';
+    }else{
+      warn.className='warnbox';
+      warn.textContent='';
+    }
+
+    $('price').innerHTML=(suggested>0?wan(suggested).replace(' 萬',''):'—')+'<small>萬</small>';
+    $('affordPay').textContent=money(afford);
+    $('maxLoan').textContent=wan(maxLoan);
+    $('priceIncome').textContent=wan(priceFromIncome);
+    $('priceDown').textContent=wan(priceFromDown);
+    $('boxIncome').className=limiter==='income'?'mark':'';
+    $('boxDown').className=limiter==='down'?'mark':'';
+
+    var limitTag=$('limitTag');
+    var explain=$('explain');
+    if(limiter==='income'){
+      limitTag.textContent='限制因素：收入';
+      explain.innerHTML='以目前條件，<b>收入可負擔的貸款額度</b>是限制因素。建議可購屋總價＝最高可貸款＋自備款。您的自備款若只按成數計算還有餘裕，但再提高總價就會超過可負擔的月付。';
+    }else if(limiter==='down'){
+      limitTag.textContent='限制因素：自備款';
+      explain.innerHTML='以目前條件，<b>自備款</b>是限制因素。依貸款成數，自備款只夠負擔這個總價；收入其實還能負擔更高的貸款。若能再補一些自備款，可買的總價就能往上調。';
+    }else if(limiter==='even'){
+      limitTag.textContent='收入與自備款相當';
+      explain.innerHTML='以目前條件，<b>收入可負擔的總價</b>與<b>自備款可買總價</b>相當接近，條件搭配得宜。';
+    }else{
+      limitTag.textContent='請先填寫條件';
+      explain.textContent='填寫收入與自備款後，會即時算出建議可購屋總價。';
+    }
+
+    var safeTag=$('safeTag');
+    var band=actualRatio<=(1/3)+1e-9?'ok':(actualRatio<=0.4?'warn':'bad');
+    if(suggested<=0){band='bad'}
+    safeTag.className='tag tag-'+band;
+    safeTag.textContent=band==='ok'?'安全':(band==='warn'?'吃緊':'超過');
+    /* If no valid result, still classify the chosen cap so the tag isn't misleading. */
+    if(suggested<=0){
+      var capBand=ratio<=(1/3)+1e-9?'ok':(ratio<=0.4?'warn':'bad');
+      safeTag.className='tag tag-'+capBand;
+      safeTag.textContent=capBand==='ok'?'安全':(capBand==='warn'?'吃緊':'超過');
+    }
+
+    $('sugPay').textContent=money(sugPay);
+    $('payLabel').textContent=grace>0?'寬限期後每月房貸約':'每月房貸約';
+    var ratioTxt='約占月收入 '+(actualRatio*100).toFixed(0)+'%';
+    if(other>0)ratioTxt+='；含其他支出約占 '+(dtiAll*100).toFixed(0)+'%';
+    $('ratioLine').textContent=ratioTxt;
+
+    var gn=$('graceNote');
+    if(grace>0&&loanUsed>0){
+      gn.style.display='block';
+      gn.textContent='寬限期 '+grace+' 年內只繳利息，每月約 '+money(gracePay)+'；寬限期結束後改為本息攤還，每月約 '+money(sugPay)+'。本試算以寬限期後的月付作為負擔能力基準，較為穩妥。';
+    }else gn.style.display='none';
+
+    $('needTotal').innerHTML=(need>0?wan(need).replace(' 萬',''):'—')+'<small>萬</small>';
+    $('needDown').textContent=wan(downUsed);
+    $('needFee').textContent=wan(fee);
+    var gap=$('needGap');
+    if(suggested<=0){gap.textContent='';}
+    else if(down+1>=need){
+      gap.innerHTML='您目前自備款 <b>'+wan(down)+'</b>，大致夠用，其中約 <b>'+wan(fee)+'</b> 建議預留給購屋雜費，不要全部當作頭期款。';
+    }else{
+      gap.innerHTML='您目前自備款 <b>'+wan(down)+'</b>，頭期款約需 <b>'+wan(downUsed)+'</b>，另建議再預留雜費約 <b>'+wan(fee)+'</b>，合計還差約 <b>'+wan(need-down)+'</b>。';
+    }
+  }
+
+  document.querySelectorAll('input,select').forEach(function(e){
+    e.addEventListener('input',calc);
+    e.addEventListener('change',calc);
+  });
+  calc();
+})();
+</script>
+</body>
+</html>
