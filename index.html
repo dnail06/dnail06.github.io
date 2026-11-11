@@ -135,6 +135,10 @@ footer .copy{font-size:11px;margin-top:14px;color:rgba(255,255,255,.35)}
 .sell-link svg{width:15px;height:15px;color:var(--gold2);transition:transform .2s}
 .sell-link:hover{background:rgba(201,162,75,.2);border-color:var(--gold2)}
 .sell-link:hover svg{transform:translateX(3px)}
+.tool-data{background:linear-gradient(160deg,var(--navy2),var(--navy));border-color:rgba(201,162,75,.35)}
+.tool-data h3{color:#fff}
+.tool-data p{color:rgba(255,255,255,.72)}
+.tool-data .ic{background:linear-gradient(150deg,var(--gold2),var(--gold));color:var(--navy)}
 .tool-sell{background:linear-gradient(160deg,#fffdf6,#fbf3dc);border-color:#ead9a8}
 .tool-sell .ic{background:linear-gradient(150deg,var(--gold2),var(--gold));color:var(--navy)}
 
@@ -147,6 +151,7 @@ footer .copy{font-size:11px;margin-top:14px;color:rgba(255,255,255,.35)}
   .cta .btn{flex:1}
   .tools .grid{grid-template-columns:1fr 1fr}
   .tool{flex-direction:column;padding:32px 28px}
+  .tool-data{grid-column:1/-1;flex-direction:row;align-items:center}
   .card{grid-template-columns:1.35fr 1fr}
   .card .info{padding:40px 38px}
 }
@@ -226,9 +231,17 @@ footer .copy{font-size:11px;margin-top:14px;color:rgba(255,255,255,.35)}
       <div class="sec-head">
         <div class="en">TOOLS</div>
         <h2>免費試算與估價</h2>
-        <p>先看買得起多少，再算房貸與成交費用；賣房前也可以先估個價。</p>
+        <p>先看買得起多少，再算房貸與成交費用；查實價登錄行情，賣房前也可以先估個價。</p>
       </div>
       <div class="grid">
+        <a class="tool tool-data" href="realprice.html">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/><path d="M4 8l6-4 6 7 5-4"/></svg></div>
+          <div>
+            <h3>新竹房市實價登錄</h3>
+            <p>新竹縣市最新成交行情：各區中位單價、價格走勢與近期成交紀錄，一次看懂。</p>
+            <span class="go">查看行情 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
         <a class="tool" href="afford.html">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16a8 8 0 1 1 14 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.4" fill="currentColor" stroke="none"/><path d="M4 20h16"/></svg></div>
           <div>

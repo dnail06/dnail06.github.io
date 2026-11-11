@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>新竹房市實價登錄｜戴毅 永義房屋 竹科展益加盟店</title>
+<meta name="description" content="新竹縣市實價登錄成交行情：各行政區中位單價、價格走勢與近期成交紀錄，資料來自內政部不動產交易實價查詢服務網。">
+<meta name="theme-color" content="#0f1f3d">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="新竹房市實價登錄｜戴毅 永義房屋">
+<meta property="og:description" content="新竹縣市實價登錄成交行情、價格走勢與近期成交紀錄。">
+<meta property="og:url" content="https://dnail06.github.io/realprice.html">
+<meta property="og:image" content="https://dnail06.github.io/images/portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f1f3d;--navy2:#162c55;--gold:#c9a24b;--gold2:#e6c878;--cream:#f8f5ee;
+  --ink:#1c2433;--muted:#6b7385;--line:#06c755;
+  --ok:#1f7a4d;--okbg:#e8f6ee;--warn:#8a5a00;--warnbg:#fff4dc;--bad:#b42318;--badbg:#fdecea;
+  --serif:"Noto Serif TC","Noto Serif CJK TC","Songti TC",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Noto Sans CJK TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.container{width:100%;max-width:640px;margin:0 auto;padding:0 16px}
+
+.hero{position:relative;overflow:hidden;color:#fff;padding:18px 0 40px;
+  background:radial-gradient(120% 80% at 85% 10%,#24407a 0%,rgba(36,64,122,0) 55%),linear-gradient(160deg,var(--navy2) 0%,var(--navy) 60%,#0a1630 100%)}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,75,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,75,.07) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000 0%,transparent 90%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 90%);pointer-events:none}
+.hero .container{position:relative}
+.back{display:inline-flex;align-items:center;gap:4px;font-size:14px;color:var(--gold2)}
+.back:hover{color:#fff}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:28px;letter-spacing:.08em;margin-top:14px}
+.hero h1::after{content:"";display:block;width:36px;height:2px;background:var(--gold);margin-top:10px}
+.hero .lead{font-size:14.5px;color:rgba(255,255,255,.75);margin-top:10px;line-height:1.6}
+
+.wrap{max-width:640px;margin:-18px auto 0;padding:0 16px 8px}
+.card{background:#fff;border-radius:16px;padding:20px;margin-bottom:16px;border:1px solid #ece5d3;box-shadow:0 14px 30px -24px rgba(15,31,61,.4)}
+h2{font-size:16px;margin:0 0 14px;color:var(--navy);letter-spacing:.04em;padding-left:10px;border-left:3px solid var(--gold)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.span2{grid-column:1/-1}
+label{display:block;font-size:14px;color:#555;margin-bottom:6px}
+input[type=number],select{width:100%;box-sizing:border-box;padding:10px 12px;font-size:16px;border:1px solid #d6d0c0;border-radius:10px;background:#fff;color:var(--ink);font-family:inherit;-webkit-appearance:none;appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 16px) 18px,calc(100% - 11px) 18px;background-size:5px 5px;background-repeat:no-repeat;padding-right:32px}
+input:focus,select:focus{outline:2px solid rgba(201,162,75,.5);border-color:var(--gold)}
+.hint{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.55}
+.unit{position:relative}
+.unit input{padding-right:42px}
+.unit i{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-style:normal;font-size:13px;color:var(--muted);pointer-events:none}
+
+
+.cta{display:grid;gap:10px;margin-top:4px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;border-radius:14px;font-size:16px;font-weight:700;letter-spacing:.06em;transition:transform .15s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn-navy{background:linear-gradient(150deg,var(--navy2),var(--navy));color:var(--gold2)}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--navy);box-shadow:0 12px 26px -10px rgba(201,162,75,.8)}
+.btn-line{background:var(--line);color:#fff;box-shadow:0 12px 26px -10px rgba(6,199,85,.7)}
+.disclaimer{font-size:13px;color:var(--muted);line-height:1.65;margin:0}
+
+footer{background:var(--navy);color:rgba(255,255,255,.55);padding:30px 0 28px;text-align:center;margin-top:32px}
+footer .fname{color:#fff;font-family:var(--serif);letter-spacing:.14em;font-size:16px}
+footer .fco{font-size:13px;color:var(--gold2);margin-top:2px}
+footer .legal{margin:14px auto 0;font-size:11.5px;line-height:1.9;color:rgba(255,255,255,.5)}
+footer .legal span{display:block}
+
+input[type=search]{width:100%;padding:10px 12px;font-size:16px;border:1px solid #d6d0c0;border-radius:10px;background:#fff;color:var(--ink);font-family:inherit;-webkit-appearance:none;appearance:none}
+input[type=search]:focus{outline:2px solid rgba(201,162,75,.5);border-color:var(--gold)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:#f1ece0;border-radius:12px;padding:4px;margin-bottom:16px}
+.seg button{border:0;background:none;font:inherit;font-size:15px;font-weight:700;color:var(--muted);height:40px;border-radius:9px;cursor:pointer;letter-spacing:.04em}
+.seg button.on{background:linear-gradient(150deg,var(--navy2),var(--navy));color:var(--gold2);box-shadow:0 6px 14px -8px rgba(15,31,61,.6)}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f-grid .span2{grid-column:1/-1}
+.disabled{opacity:.45;pointer-events:none}
+
+.sum{background:linear-gradient(160deg,var(--navy2) 0%,var(--navy) 70%,#0a1630 100%);color:#fff;border:0;position:relative;overflow:hidden}
+.sum::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,75,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,75,.08) 1px,transparent 1px);background-size:36px 36px;mask-image:linear-gradient(180deg,#000 0%,transparent 80%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 80%);pointer-events:none}
+.sum>*{position:relative}
+.sum .k{font-size:13px;letter-spacing:.14em;color:var(--gold2);font-weight:700}
+.sum .scope{font-size:14px;color:rgba(255,255,255,.75);margin-top:2px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.kpis div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:10px 10px}
+.kpis b{display:block;font-family:var(--serif);font-size:20px;color:#fff;letter-spacing:.02em;line-height:1.3}
+.kpis b small{font-size:12px;font-family:inherit;color:rgba(255,255,255,.7);margin-left:3px;font-weight:600}
+.kpis span{font-size:12.5px;color:rgba(255,255,255,.65)}
+.kpis .main{grid-column:1/-1;box-shadow:inset 0 0 0 1.5px rgba(230,200,120,.55)}
+.kpis .main b{font-size:38px;color:var(--gold2)}
+.empty{font-size:14px;color:rgba(255,255,255,.8);margin-top:12px;display:none}
+
+.chart svg{display:block;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;background:var(--gold);vertical-align:middle;margin-right:5px}
+.legend i.dash{background:repeating-linear-gradient(90deg,var(--gold) 0 4px,transparent 4px 7px)}
+
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:76px 1fr 64px;align-items:center;gap:10px;font-size:14px;cursor:pointer;border:0;background:none;font-family:inherit;text-align:left;padding:3px 0;color:var(--ink)}
+.bar .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .tr{height:14px;background:#f1ece0;border-radius:999px;overflow:hidden}
+.bar .fl{height:100%;border-radius:999px;background:linear-gradient(90deg,#9aa6bf,#6f7f9f)}
+.bar .v{text-align:right;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.bar .v small{display:block;font-size:11px;color:var(--muted);font-weight:400;line-height:1.1}
+.bar.on .nm{font-weight:700;color:var(--navy)}
+.bar.on .fl{background:linear-gradient(90deg,var(--gold2),var(--gold))}
+
+.listhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.listhead h2{margin:0}
+.listhead select{width:auto;font-size:14px;padding:7px 30px 7px 10px;background-position:calc(100% - 14px) 15px,calc(100% - 9px) 15px}
+.tx{border:1px solid #efe8d8;border-radius:12px;padding:12px 14px;margin-bottom:10px;background:#fffdf8}
+.tx .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.tx .ad{font-weight:700;color:var(--navy);font-size:15px;line-height:1.45}
+.tx .pj{font-size:12.5px;color:var(--gold);font-weight:700;letter-spacing:.04em}
+.tx .up{text-align:right;white-space:nowrap}
+.tx .up b{display:block;font-size:19px;color:var(--navy);font-family:var(--serif);line-height:1.2}
+.tx .up span{font-size:11.5px;color:var(--muted)}
+.tx .meta{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px;color:#4b5363;margin-top:6px}
+.tx .meta em{font-style:normal;color:var(--muted)}
+.tx .bot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:8px;border-top:1px dashed #e8dfca;font-size:13px;color:var(--muted)}
+.tx .bot b{font-size:15px;color:var(--ink)}
+.chip{display:inline-block;font-size:11.5px;padding:1px 8px;border-radius:999px;background:#f1ece0;color:var(--navy);font-weight:700}
+.pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+.pager button{height:40px;padding:0 16px;border-radius:10px;border:1px solid #d6d0c0;background:#fff;font:inherit;font-size:14px;font-weight:700;color:var(--navy);cursor:pointer}
+.pager button:disabled{opacity:.4;cursor:default}
+.pager span{font-size:13px;color:var(--muted)}
+
+.src{font-size:13px;color:var(--muted);line-height:1.7}
+.src b{color:var(--navy)}
+.src ul{padding-left:18px;margin-top:6px}
+
+.cta-box{background:linear-gradient(160deg,#fffdf6,#fbf3dc);border-color:#ead9a8;text-align:center}
+.cta-box h3{font-family:var(--serif);font-size:20px;color:var(--navy);letter-spacing:.06em}
+.cta-box p{font-size:14px;color:var(--muted);margin:6px 0 14px}
+.loading{padding:30px 0;text-align:center;color:var(--muted)}
+@media(max-width:360px){.f-grid{grid-template-columns:1fr}.f-grid .span2{grid-column:auto}.kpis{grid-template-columns:1fr 1fr}}
+@media(min-width:640px){.hero{padding:24px 0 48px}.hero h1{font-size:34px}.card{padding:24px}.cta{grid-template-columns:1fr 1fr 1fr}.kpis b{font-size:24px}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <a class="back" href="./">← 回首頁</a>
+    <h1>新竹房市實價登錄</h1>
+    <p class="lead">新竹縣市最新成交行情，看各區單價、價格走勢與近期成交紀錄。</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="card" id="filters">
+    <div class="seg" role="tablist">
+      <button type="button" data-kind="a" class="on">中古屋／成屋</button>
+      <button type="button" data-kind="b">預售屋</button>
+    </div>
+    <div class="f-grid">
+      <div>
+        <label for="city">縣市</label>
+        <select id="city"><option value="新竹縣">新竹縣</option><option value="新竹市">新竹市</option></select>
+      </div>
+      <div>
+        <label for="dist">行政區</label>
+        <select id="dist"></select>
+      </div>
+      <div>
+        <label for="type">建物型態</label>
+        <select id="type">
+          <option value="res">全部住宅</option>
+          <option value="0">大樓</option>
+          <option value="1">華廈</option>
+          <option value="2">公寓</option>
+          <option value="3">透天厝</option>
+          <option value="4">套房</option>
+          <option value="5">其他（店面、辦公等）</option>
+          <option value="all">全部</option>
+        </select>
+      </div>
+      <div id="ageBox">
+        <label for="age">屋齡</label>
+        <select id="age">
+          <option value="all">不限</option>
+          <option value="0-5">5 年內</option>
+          <option value="5-10">5–10 年</option>
+          <option value="10-20">10–20 年</option>
+          <option value="20-30">20–30 年</option>
+          <option value="30-999">30 年以上</option>
+        </select>
+      </div>
+      <div>
+        <label for="time">成交時間</label>
+        <select id="time">
+          <option value="3">近 3 個月</option>
+          <option value="6">近 6 個月</option>
+          <option value="12" selected>近 1 年</option>
+          <option value="0">全部</option>
+        </select>
+      </div>
+      <div>
+        <label for="q">路名／社區</label>
+        <input id="q" type="search" placeholder="例：光明六路" autocomplete="off">
+      </div>
+    </div>
+    <p class="hint" id="qHint">新竹市的政府資料未區分東區、北區、香山區，以全市計算。</p>
+  </div>
+
+  <div class="card sum">
+    <div class="k">成交行情</div>
+    <div class="scope" id="scope">資料載入中…</div>
+    <div class="kpis">
+      <div class="main"><b id="kUnit">—</b><span>中位數單價（車位價格已分離者扣除車位）</span></div>
+      <div><b id="kCount">—</b><span>成交筆數</span></div>
+      <div><b id="kAvg">—</b><span>平均總價</span></div>
+      <div><b id="kAge">—</b><span id="kAgeL">中位屋齡</span></div>
+    </div>
+    <p class="empty" id="empty">這個條件目前沒有符合的成交紀錄，試著放寬條件看看。</p>
+  </div>
+
+  <div class="card chart">
+    <h2>單價走勢（每月中位數）</h2>
+    <div id="chart"><div class="loading">載入中…</div></div>
+    <div class="legend"><span><i></i>每月中位數單價（萬／坪）</span><span id="legDash"><i class="dash"></i>近月份仍陸續登記中</span></div>
+  </div>
+
+  <div class="card">
+    <h2>各行政區中位單價</h2>
+    <p class="hint" style="margin:-6px 0 12px">與上方條件相同（不含路名篩選），點選可切換行政區。</p>
+    <div class="bars" id="bars"></div>
+  </div>
+
+  <div class="card" id="listCard">
+    <div class="listhead">
+      <h2>成交紀錄</h2>
+      <select id="sort" aria-label="排序">
+        <option value="date">日期新→舊</option>
+        <option value="unitd">單價高→低</option>
+        <option value="unita">單價低→高</option>
+        <option value="totald">總價高→低</option>
+        <option value="totala">總價低→高</option>
+      </select>
+    </div>
+    <div id="list"><div class="loading">載入中…</div></div>
+    <div class="pager"><button type="button" id="prev">上一頁</button><span id="pinfo"></span><button type="button" id="next">下一頁</button></div>
+  </div>
+
+  <div class="card cta-box">
+    <h3>想知道自己的房子值多少？</h3>
+    <p>實價登錄只是參考，屋況、樓層、景觀都會影響價格。戴毅免費幫您估價。</p>
+    <div class="cta">
+      <a class="btn btn-navy" href="sell.html">免費估價 →</a>
+      <a class="btn btn-gold" href="tel:0917505303">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+        撥打電話
+      </a>
+      <a class="btn btn-line" href="https://line.me/ti/p/~dnail06" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.3 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
+        加 LINE
+      </a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="src" id="src">
+      <b>資料來源：</b>內政部不動產交易實價查詢服務網
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="fname">戴毅</div>
+    <div class="fco">永義房屋 竹科展益加盟店</div>
+    <p class="legal">
+      <span>經紀業特許字號：府地價字第1140175778號</span>
+      <span>營業員：戴 毅 (114)登字第486520號</span>
+      <span>經紀人：黃勤雯 (106)中市經紀字第01777號</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var D=null, kind='a', page=0, PER=15;
+  var TN=['大樓','華廈','公寓','透天厝','套房','其他'];
+  var RES={0:1,1:1,2:1,3:1,4:1};
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  var fmtD=function(d){var s=String(d);return s.slice(0,3)+'/'+s.slice(3,5)+'/'+s.slice(5,7)};
+  var ym=function(d){return Math.floor(d/100)};
+  var ymAdd=function(m,k){var y=Math.floor(m/100),mo=m%100+k;while(mo<1){mo+=12;y--}while(mo>12){mo-=12;y++}return y*100+mo};
+  var median=function(a){if(!a.length)return NaN;a=a.slice().sort(function(x,y){return x-y});var h=a.length>>1;return a.length%2?a[h]:(a[h-1]+a[h])/2};
+  var n1=function(v){return (Math.round(v*10)/10).toLocaleString('zh-TW',{maximumFractionDigits:1})};
+  var wan=function(v){return v>=10000?n1(v/10000)+'<small>億</small>':Math.round(v).toLocaleString('zh-TW')+'<small>萬</small>'};
+  var wanT=function(v){return v>=10000?n1(v/10000)+' 億':Math.round(v).toLocaleString('zh-TW')+' 萬'};
+
+  function fillDist(){
+    var c=$('city').value, sel=$('dist'), cur=sel.value, h='';
+    var list=D.d.map(function(x,i){return {c:x[0],d:x[1],i:i}}).filter(function(x){return x.c===c});
+    if(list.length>1)h+='<option value="all">全部行政區</option>';
+    list.forEach(function(x){h+='<option value="'+x.i+'">'+(x.d===x.c?'全市':x.d)+'</option>'});
+    sel.innerHTML=h;
+    if([].some.call(sel.options,function(o){return o.value===cur}))sel.value=cur;
+    sel.disabled=list.length<2;
+  }
+  function rows(){return kind==='a'?D.a:D.b}
+  function filt(opt){
+    opt=opt||{};
+    var c=$('city').value, dist=$('dist').value, ty=$('type').value, ag=$('age').value, tm=+$('time').value, q=$('q').value.trim();
+    var R=rows(), maxD=R.length?R[0][1]:0, cut=tm?ymAdd(ym(maxD),-(tm-1))*100:0;
+    var lo=0,hi=1e9; if(kind==='a'&&ag!=='all'){var p=ag.split('-');lo=+p[0];hi=+p[1]}
+    return R.filter(function(r){
+      if(!opt.allDist){
+        if(dist==='all'){if(D.d[r[0]][0]!==c)return false}
+        else if(r[0]!=dist)return false;
+      }
+      if(ty==='res'){if(!RES[r[3]])return false}else if(ty!=='all'&&r[3]!=ty)return false;
+      if(cut&&r[1]<cut)return false;
+      if(kind==='a'&&ag!=='all'){if(r[7]==null||r[7]<lo||r[7]>=hi)return false}
+      if(q&&!opt.noQ){var s=r[2]+(kind==='b'?D.n[r[13]]:'');if(s.indexOf(q)<0)return false}
+      return true;
+    });
+  }
+
+  function render(){
+    page=0;
+    var F=filt();
+    var c=$('city').value, ds=$('dist'), dn=ds.options[ds.selectedIndex]?ds.options[ds.selectedIndex].text:'';
+    var scope=(dn==='全市'||dn==='全部行政區'?c+(dn==='全市'?'':'全部'):c+dn)+'・'+$('type').options[$('type').selectedIndex].text+'・'+$('time').options[$('time').selectedIndex].text+(kind==='b'?'・預售屋':'');
+    if($('q').value.trim())scope+='・「'+esc($('q').value.trim())+'」';
+    $('scope').innerHTML=scope;
+    var u=F.map(function(r){return r[9]});
+    $('kCount').innerHTML=F.length.toLocaleString('zh-TW')+'<small>筆</small>';
+    $('kUnit').innerHTML=F.length?n1(median(u))+'<small>萬／坪</small>':'—';
+    $('kAvg').innerHTML=F.length?wan(F.reduce(function(s,r){return s+r[8]},0)/F.length):'—';
+    if(kind==='a'){
+      var ages=F.filter(function(r){return r[7]!=null}).map(function(r){return r[7]});
+      $('kAgeL').textContent='中位屋齡';
+      $('kAge').innerHTML=ages.length?n1(median(ages))+'<small>年</small>':'—';
+    }else{
+      $('kAgeL').textContent='中位建坪';
+      $('kAge').innerHTML=F.length?n1(median(F.map(function(r){return r[6]})))+'<small>坪</small>':'—';
+    }
+    $('empty').style.display=F.length?'none':'block';
+    $('qHint').style.display=c==='新竹市'?'':'none';
+    chart(F); bars(); list(F);
+  }
+
+  function chart(F){
+    var R=rows(); if(!R.length){$('chart').innerHTML='';return}
+    var maxM=ym(R[0][1]), minM=ym(R[R.length-1][1]);
+    var tm=+$('time').value; if(tm){var cm=ymAdd(maxM,-(tm-1)); if(cm>minM)minM=cm}
+    var months=[]; for(var m=minM;m<=maxM;m=ymAdd(m,1))months.push(m);
+    var g={}; F.forEach(function(r){var k=ym(r[1]);(g[k]=g[k]||[]).push(r[9])});
+    var pts=months.map(function(m,i){var a=g[m]||[];return {m:m,i:i,n:a.length,v:a.length>=3?median(a):null}});
+    var vals=pts.filter(function(p){return p.v!=null}).map(function(p){return p.v});
+    if(!vals.length){$('chart').innerHTML='<div class="loading">樣本不足，無法畫出走勢（每月至少 3 筆）。</div>';return}
+    var W=Math.max(300,Math.min(720,$('chart').clientWidth||340)),H=Math.round(Math.max(220,Math.min(300,W*.62))),L=36,Rr=16,T=26,B=46,PX=20;
+    var mn=Math.min.apply(0,vals),mx=Math.max.apply(0,vals),pad=Math.max((mx-mn)*.25,mx*.05);
+    var raw=(mx-mn+2*pad)/4, step=[1,2,2.5,5,10,20,25,50].filter(function(s){return s>=raw})[0]||100;
+    var y0=Math.max(0,Math.floor((mn-pad)/step)*step), y1=y0+step*4; while(y1<mx+pad*.5)y1+=step;
+    var X=function(i){return months.length<2?(L+W-Rr)/2:L+PX+i*(W-L-Rr-PX*2)/(months.length-1)};
+    var Y=function(v){return T+(H-T-B)*(1-(v-y0)/(y1-y0))};
+    var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="每月中位數單價走勢">';
+    for(var yv=y0;yv<=y1+1e-9;yv+=step){var yy=Y(yv);s+='<line x1="'+L+'" x2="'+(W-Rr)+'" y1="'+yy+'" y2="'+yy+'" stroke="#eee6d4"/><text x="'+(L-6)+'" y="'+(yy+4)+'" font-size="12" text-anchor="end" fill="#8a90a0">'+n1(yv)+'</text>'}
+    var incomplete=kind==='a'?2:0, solid='', dash='', prev=null;
+    pts.forEach(function(p){
+      if(p.v==null)return;
+      var seg=prev?('M'+X(prev.i)+' '+Y(prev.v)+'L'+X(p.i)+' '+Y(p.v)):'';
+      if(seg){ if(p.i>=months.length-incomplete)dash+=seg; else solid+=seg; }
+      prev=p;
+    });
+    s+='<path d="'+solid+'" fill="none" stroke="#c9a24b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>';
+    s+='<path d="'+dash+'" fill="none" stroke="#c9a24b" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>';
+    var every=Math.ceil(months.length/Math.max(4,Math.floor((W-L)/58)));
+    pts.forEach(function(p){
+      var x=X(p.i), mo=p.m%100, yr=Math.floor(p.m/100);
+      if(p.i%every===0||p.i===months.length-1)s+='<text x="'+x+'" y="'+(H-B+20)+'" font-size="12" text-anchor="middle" fill="#6b7385">'+(mo===1||p.i===0?yr+'/':'')+mo+'月</text>'+'<text x="'+x+'" y="'+(H-B+36)+'" font-size="10.5" text-anchor="middle" fill="#a3a8b5">'+(p.n?p.n+'筆':'')+'</text>';
+      if(p.v==null)return;
+      var late=p.i>=months.length-incomplete;
+      s+='<circle cx="'+x+'" cy="'+Y(p.v)+'" r="4.5" fill="'+(late?'#fff':'#0f1f3d')+'" stroke="#c9a24b" stroke-width="2.5"/>';
+      if(p.i%every===0||p.i===months.length-1||W>=560)s+='<text x="'+x+'" y="'+(Y(p.v)-10)+'" font-size="12" font-weight="700" text-anchor="middle" fill="#0f1f3d">'+n1(p.v)+'</text>';
+    });
+    s+='</svg>';
+    $('chart').innerHTML=s;
+    $('legDash').style.display=incomplete?'':'none';
+    lastF=F;
+  }
+
+  function bars(){
+    var F=filt({allDist:1,noQ:1}), g={};
+    F.forEach(function(r){(g[r[0]]=g[r[0]]||[]).push(r[9])});
+    var arr=Object.keys(g).filter(function(k){return g[k].length>=3}).map(function(k){return {i:+k,v:median(g[k]),n:g[k].length}}).sort(function(a,b){return b.v-a.v});
+    if(!arr.length){$('bars').innerHTML='<div class="hint">樣本不足。</div>';return}
+    var mx=arr[0].v, sel=$('dist').value, c=$('city').value;
+    $('bars').innerHTML=arr.map(function(x){
+      var dd=D.d[x.i], on=(sel==x.i)||(sel==='all'&&dd[0]===c);
+      return '<button type="button" class="bar'+(on?' on':'')+'" data-i="'+x.i+'"><span class="nm">'+dd[1]+'</span><span class="tr"><span class="fl" style="width:'+Math.max(4,x.v/mx*100)+'%;display:block"></span></span><span class="v">'+n1(x.v)+'<small>'+x.n+' 筆</small></span></button>';
+    }).join('')+'<p class="hint" style="margin-top:4px">單位：萬／坪，3 筆以下不列出。</p>';
+  }
+
+  var LF=[], lastF=null;
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){if(lastF)chart(lastF)},200)});
+  function list(F){
+    var so=$('sort').value;
+    LF=F.slice();
+    var key={date:function(r){return -r[1]},unitd:function(r){return -r[9]},unita:function(r){return r[9]},totald:function(r){return -r[8]},totala:function(r){return r[8]}}[so];
+    LF.sort(function(a,b){return key(a)-key(b)||b[1]-a[1]});
+    page=0; drawList();
+  }
+  function drawList(){
+    var pages=Math.max(1,Math.ceil(LF.length/PER));
+    var part=LF.slice(page*PER,page*PER+PER);
+    $('list').innerHTML=part.length?part.map(function(r){
+      var dd=D.d[r[0]], area=dd[1]===dd[0]?dd[0]:dd[1];
+      var fl=r[4]?(r[4]==='全棟'?'全棟':r[4]+'樓')+(r[5]?'／'+r[5]+'樓':''):'';
+      var park=r[10]===1?'車位 '+n1(r[11])+' 萬':(r[10]===2?'含車位（未分離）':'無車位');
+      var pj=kind==='b'&&D.n[r[13]]?'<div class="pj">'+esc(D.n[r[13]])+'</div>':'';
+      return '<div class="tx"><div class="top"><div>'+pj+'<div class="ad">'+esc(area+' '+r[2])+'</div></div><div class="up"><b>'+n1(r[9])+'</b><span>萬／坪</span></div></div>'+
+        '<div class="meta"><span class="chip">'+TN[r[3]]+'</span>'+(fl?'<span><em>樓層</em> '+fl+'</span>':'')+'<span><em>建坪</em> '+n1(r[6])+' 坪</span>'+(kind==='a'?'<span><em>屋齡</em> '+(r[7]==null?'—':n1(r[7])+' 年')+'</span>':'')+(r[12]?'<span>'+r[12]+' 房</span>':'')+'</div>'+
+        '<div class="bot"><span>'+fmtD(r[1])+'・'+park+'</span><b>'+wanT(r[8])+'</b></div></div>';
+    }).join(''):'<div class="hint">沒有符合條件的成交紀錄。</div>';
+    $('pinfo').textContent=LF.length?('第 '+(page+1)+' / '+pages+' 頁，共 '+LF.length.toLocaleString('zh-TW')+' 筆'):'';
+    $('prev').disabled=page<=0; $('next').disabled=page>=pages-1;
+  }
+
+  function source(){
+    var M=D.meta, sp=kind==='a'?M.spanA:M.spanB;
+    var st=M.stats;
+    $('src').innerHTML='<b>資料來源：</b>內政部不動產交易實價查詢服務網（'+M.seasons.slice().reverse().map(function(s){var q=s.split('S');return q[0]+'年第'+q[1]+'季'}).join('、')+'開放資料，政府發布日 '+M.published+'），資料期間 '+fmtD(sp[0])+'–'+fmtD(sp[1])+'（交易日期），更新日期 '+M.updated+'。'+
+      '<ul><li>中古屋／成屋為登記日期 '+M.reg+' 的買賣案件；預售屋為同期申報的預售屋買賣，兩者分開統計。</li>'+
+      '<li>已排除親友、員工等特殊關係交易、急買急賣、政府標售、含其他標的價格等特殊交易，以及純土地、純車位交易（共排除特殊交易 '+st.special.toLocaleString('zh-TW')+' 筆）。</li>'+
+      '<li>單價以「萬／坪」表示；車位價格有分開登記時，單價已扣除車位價格與面積。</li>'+
+      '<li>地址僅顯示路段與門牌區間。近 1–2 個月的案件仍會陸續登記，數字可能變動。</li>'+
+      '<li>本頁統計僅供參考，實際行情請以個別物件條件為準。</li></ul>';
+  }
+
+  document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
+    kind=b.getAttribute('data-kind');
+    document.querySelectorAll('.seg button').forEach(function(x){x.classList.toggle('on',x===b)});
+    $('ageBox').classList.toggle('disabled',kind==='b');
+    $('q').placeholder=kind==='b'?'例：光明六路、建案名稱':'例：光明六路';
+    source(); render();
+  })});
+  $('city').addEventListener('change',function(){fillDist();render()});
+  ['dist','type','age','time','sort'].forEach(function(id){$(id).addEventListener('change',id==='sort'?function(){list(filt())}:render)});
+  var qt; $('q').addEventListener('input',function(){clearTimeout(qt);qt=setTimeout(render,200)});
+  $('bars').addEventListener('click',function(e){
+    var b=e.target.closest('.bar'); if(!b)return;
+    var dd=D.d[+b.getAttribute('data-i')]; $('city').value=dd[0]; fillDist(); $('dist').value=b.getAttribute('data-i'); render();
+  });
+  $('prev').addEventListener('click',function(){if(page>0){page--;drawList();$('listCard').scrollIntoView({behavior:'smooth'})}});
+  $('next').addEventListener('click',function(){page++;drawList();$('listCard').scrollIntoView({behavior:'smooth'})});
+
+  fetch('data/realprice-hsinchu.json').then(function(r){return r.json()}).then(function(d){
+    D=d; fillDist(); $('dist').value='0'; source(); render();
+  }).catch(function(){ $('scope').textContent='資料載入失敗，請重新整理頁面。'; });
+})();
+</script>
+</body>
+</html>
