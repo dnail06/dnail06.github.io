@@ -1,12 +1,294 @@
 <!DOCTYPE html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>房屋試算工具</title>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>戴毅｜永義房屋 竹科展益加盟店</title>
+<meta name="description" content="永義房屋 竹科展益加盟店 戴毅，用心服務，幫您找到理想的家。提供房貸試算、成交費用試算等免費工具，歡迎來電或加 LINE 洽詢。">
+<meta name="theme-color" content="#0f1f3d">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="戴毅｜永義房屋">
+<meta property="og:title" content="戴毅｜永義房屋 竹科展益加盟店">
+<meta property="og:description" content="用心服務，幫您找到理想的家。免費房貸試算、成交費用試算，歡迎來電或加 LINE 洽詢。">
+<meta property="og:url" content="https://dnail06.github.io/">
+<meta property="og:image" content="https://dnail06.github.io/images/portrait.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="1200">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/portrait-cutout.webp">
 <style>
-body{font-family:-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;background:#f4f6f9;margin:0;padding:40px 16px;color:#1f2937}
-.wrap{max-width:520px;margin:0 auto}h1{font-size:26px;text-align:center;margin-bottom:28px}
-a.card{display:block;background:#fff;border-radius:14px;padding:22px 24px;margin-bottom:16px;text-decoration:none;color:inherit;box-shadow:0 2px 10px rgba(0,0,0,.06);transition:transform .15s}
-a.card:hover{transform:translateY(-2px)}.t{font-size:20px;font-weight:700;color:#1d4ed8}.d{margin-top:6px;color:#6b7280;font-size:15px}
-</style></head><body><div class="wrap"><h1>房屋試算工具</h1>
-<a class="card" href="loan.html"><div class="t">房貸試算</div><div class="d">輸入房屋總價，算出貸款金額與每月要繳多少。</div></a>
-<a class="card" href="closing-cost.html"><div class="t">成交費用試算</div><div class="d">輸入成交總價，算出買賣雙方的仲介費、代書費與各項稅費。</div></a>
-</div></body></html>
+:root{
+  --navy:#0f1f3d;--navy2:#162c55;--gold:#c9a24b;--gold2:#e6c878;--cream:#f8f5ee;
+  --ink:#1c2433;--muted:#6b7385;--line:#06c755;
+  --serif:"Noto Serif TC","Noto Serif CJK TC","Songti TC",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Noto Sans CJK TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--navy);line-height:1.7;-webkit-font-smoothing:antialiased;padding-bottom:84px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.container{width:100%;max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* ---------- top bar ---------- */
+.topbar{position:absolute;inset:0 0 auto 0;z-index:5}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:600;letter-spacing:.08em;font-size:15px}
+.brand .mark{width:30px;height:30px;border:1.5px solid var(--gold);border-radius:8px;display:grid;place-items:center;color:var(--gold2);font-family:var(--serif);font-size:15px}
+.topbar nav{display:none;gap:28px;font-size:14px;color:rgba(255,255,255,.75)}
+.topbar nav a:hover{color:var(--gold2)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;
+  background:radial-gradient(120% 80% at 85% 10%,#24407a 0%,rgba(36,64,122,0) 55%),linear-gradient(160deg,var(--navy2) 0%,var(--navy) 60%,#0a1630 100%);
+  padding:88px 0 64px}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,75,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,75,.07) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(180deg,#000 0%,transparent 85%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 85%);pointer-events:none}
+.hero .container{position:relative;display:flex;flex-direction:column;align-items:center;gap:36px}
+.visual{position:relative;width:min(88vw,360px);aspect-ratio:360/440}
+.visual .art{position:absolute;inset:0;-webkit-mask-image:linear-gradient(180deg,#000 80%,transparent 99%);mask-image:linear-gradient(180deg,#000 80%,transparent 99%)}
+.visual .disc{position:absolute;left:50%;bottom:4%;width:84%;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fbf1d6 0%,#e9cf8c 45%,#c9a24b 100%);box-shadow:0 0 0 10px rgba(201,162,75,.12),0 0 80px rgba(230,200,120,.25)}
+.visual .ring{position:absolute;right:-2%;top:16%;width:62%;aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(230,200,120,.6)}
+.visual .stripes{position:absolute;left:0;top:30%;width:38%;height:46%;background:repeating-linear-gradient(135deg,rgba(230,200,120,.45) 0 1.5px,transparent 1.5px 11px)}
+.visual .block{position:absolute;right:2%;bottom:10%;width:34%;height:36%;border:1.5px solid rgba(230,200,120,.55);background:linear-gradient(160deg,rgba(42,74,138,.55),rgba(26,51,102,.2))}
+.visual .vline{position:absolute;left:12%;top:6%;width:1.5px;height:30%;background:linear-gradient(var(--gold),transparent)}
+.visual .hline{position:absolute;right:0;bottom:8%;width:40%;height:1.5px;background:linear-gradient(90deg,transparent,var(--gold))}
+.visual img{position:absolute;left:50%;bottom:0;height:100%;width:auto;max-width:none;transform:translateX(-50%);filter:drop-shadow(0 18px 30px rgba(0,0,0,.35))}
+.sign{position:absolute;left:-2%;bottom:7%;z-index:3;width:180px;line-height:0;transform:rotate(-12deg);filter:drop-shadow(0 2px 6px rgba(10,22,48,.5));pointer-events:none}
+.sign img{width:100%;height:auto}
+.sign svg{position:absolute;left:6%;bottom:-12px;width:110%;height:26px;overflow:visible}
+.visual .badge{position:absolute;right:0;bottom:-6px;z-index:3;white-space:nowrap;background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--navy);font-weight:700;font-size:12.5px;letter-spacing:.12em;padding:7px 16px;border-radius:999px;box-shadow:0 10px 24px -8px rgba(201,162,75,.7)}
+.intro{text-align:center;max-width:520px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold2);font-size:13px;letter-spacing:.32em;font-weight:600}
+.eyebrow::before,.eyebrow::after{content:"";width:26px;height:1px;background:var(--gold)}
+.intro h1{font-family:var(--serif);font-weight:900;font-size:56px;letter-spacing:.18em;line-height:1.2;margin:14px 0 6px;padding-left:.18em}
+.intro .company{font-size:17px;color:rgba(255,255,255,.88);letter-spacing:.06em}
+.intro .tagline{font-family:var(--serif);font-size:20px;color:var(--gold2);margin-top:18px;letter-spacing:.08em}
+.intro .sub{font-size:15px;color:rgba(255,255,255,.66);margin-top:8px}
+.cta{display:flex;flex-direction:column;gap:12px;margin-top:28px;width:100%}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;height:54px;border-radius:14px;font-size:17px;font-weight:700;letter-spacing:.06em;transition:transform .15s,box-shadow .15s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:active{transform:scale(.98)}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--navy);box-shadow:0 12px 26px -10px rgba(201,162,75,.8)}
+.btn-line{background:var(--line);color:#fff;box-shadow:0 12px 26px -10px rgba(6,199,85,.7)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.3);color:#fff}
+.btn:hover{transform:translateY(-2px)}
+.hero-meta{display:flex;justify-content:center;gap:22px;margin-top:20px;font-size:14px;color:rgba(255,255,255,.7);flex-wrap:wrap}
+.hero-meta span{display:inline-flex;align-items:center;gap:6px}
+.hero-meta b{color:#fff;font-weight:600;letter-spacing:.04em}
+
+/* ---------- sections ---------- */
+section{padding:72px 0}
+.sec-head{text-align:center;margin-bottom:36px}
+.sec-head .en{font-size:12px;letter-spacing:.4em;color:var(--gold);font-weight:700}
+.sec-head h2{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--navy);letter-spacing:.1em;margin-top:6px}
+.sec-head h2::after{content:"";display:block;width:40px;height:2px;background:var(--gold);margin:14px auto 0}
+.sec-head p{color:var(--muted);font-size:15px;margin-top:14px}
+
+/* tools */
+.tools{background:var(--cream)}
+.tools .grid{display:grid;gap:18px}
+.tool{position:relative;display:flex;gap:18px;align-items:flex-start;background:#fff;border-radius:20px;padding:26px 22px;border:1px solid #ece5d3;box-shadow:0 18px 40px -26px rgba(15,31,61,.35);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.tool::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2),transparent)}
+.tool:hover{transform:translateY(-4px);box-shadow:0 26px 50px -24px rgba(15,31,61,.45)}
+.tool .ic{flex:none;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(150deg,var(--navy2),var(--navy));color:var(--gold2)}
+.tool .ic svg{width:28px;height:28px}
+.tool h3{font-size:20px;color:var(--navy);letter-spacing:.06em;font-weight:700}
+.tool p{color:var(--muted);font-size:15px;margin-top:4px}
+.tool .go{display:inline-flex;align-items:center;gap:6px;margin-top:12px;color:var(--gold);font-weight:700;font-size:14px;letter-spacing:.08em}
+.tool .go svg{width:16px;height:16px;transition:transform .2s}
+.tool:hover .go svg{transform:translateX(4px)}
+
+/* contact */
+.contact{background:#fff}
+.card{max-width:880px;margin:0 auto;border-radius:24px;overflow:hidden;display:grid;background:linear-gradient(160deg,var(--navy2),var(--navy));color:#fff;box-shadow:0 30px 60px -30px rgba(15,31,61,.6)}
+.card .info{padding:30px 24px}
+.card .info h3{font-family:var(--serif);font-size:26px;letter-spacing:.14em}
+.card .info .co{color:var(--gold2);font-size:14px;letter-spacing:.06em;margin-top:2px}
+.rows{margin-top:22px;display:grid;gap:12px}
+.row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);transition:background .15s}
+.row:hover{background:rgba(255,255,255,.1)}
+.row .ri{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(201,162,75,.15);color:var(--gold2)}
+.row .ri svg{width:20px;height:20px}
+.row small{display:block;font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.1em}
+.row strong{font-size:18px;letter-spacing:.06em;font-weight:600}
+.qr{background:var(--cream);color:var(--ink);padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.qr .qbox{background:#fff;padding:12px;border-radius:18px;box-shadow:0 14px 30px -18px rgba(15,31,61,.45);border:1px solid #ece5d3}
+.qr img{width:176px;height:176px;border-radius:8px}
+.qr p{margin-top:14px;font-size:14px;color:var(--muted)}
+.qr p b{color:var(--navy);display:block;font-size:16px;letter-spacing:.06em}
+
+/* footer */
+footer{background:var(--navy);color:rgba(255,255,255,.55);padding:36px 0 30px;text-align:center}
+footer .fname{color:#fff;font-family:var(--serif);letter-spacing:.14em;font-size:16px}
+footer .fco{font-size:13px;color:var(--gold2);margin-top:2px;letter-spacing:.06em}
+footer .legal{margin:18px auto 0;font-size:11.5px;line-height:1.9;color:rgba(255,255,255,.5);letter-spacing:.02em}
+footer .legal span{display:block}
+footer .copy{font-size:11px;margin-top:14px;color:rgba(255,255,255,.35)}
+
+/* mobile sticky bar */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(15,31,61,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(201,162,75,.3)}
+.dock .btn{height:48px;font-size:16px;border-radius:12px}
+
+@media (min-width:640px){
+  .cta{flex-direction:row}
+  .cta .btn{flex:1}
+  .tools .grid{grid-template-columns:1fr 1fr}
+  .tool{flex-direction:column;padding:32px 28px}
+  .card{grid-template-columns:1.35fr 1fr}
+  .card .info{padding:40px 38px}
+}
+@media (min-width:960px){
+  body{padding-bottom:0}
+  .dock{display:none}
+  .topbar nav{display:flex}
+  .hero{padding:120px 0 100px}
+  .hero .container{flex-direction:row-reverse;justify-content:space-between;align-items:center;gap:60px}
+  .visual{width:440px;margin-right:10px}
+  .sign{width:228px;left:-8%}
+  .intro{text-align:left;max-width:560px}
+  .eyebrow::before{display:none}
+  .intro h1{font-size:76px;padding-left:0}
+  .intro .company{font-size:19px}
+  .intro .tagline{font-size:24px}
+  .cta{max-width:460px}
+  .hero-meta{justify-content:flex-start}
+  section{padding:96px 0}
+  .sec-head h2{font-size:34px}
+  .tools .grid{max-width:900px;margin:0 auto}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="#top"><span class="mark">毅</span>戴毅｜永義房屋</a>
+    <nav><a href="#tools">試算工具</a><a href="#contact">聯絡我</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container">
+      <div class="visual">
+        <div class="art">
+          <div class="ring"></div>
+          <div class="stripes"></div>
+          <div class="vline"></div>
+          <div class="block"></div>
+          <div class="disc"></div>
+          <div class="hline"></div>
+          <img src="images/portrait-cutout.webp" alt="戴毅 個人照" width="700" height="1122">
+        </div>
+        <div class="sign"><img src="images/signature.webp" alt="戴毅 簽名" width="640" height="359"><svg viewBox="0 0 200 26" preserveAspectRatio="none"><path d="M2 18 C 50 6, 120 4, 198 12" fill="none" stroke="#e6c878" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <div class="badge">永義房屋 · 營業員</div>
+      </div>
+      <div class="intro">
+        <div class="eyebrow">專業房產顧問</div>
+        <h1>戴毅</h1>
+        <div class="company">永義房屋 竹科展益加盟店</div>
+        <div class="tagline">用心服務，幫您找到理想的家</div>
+        <p class="sub">買屋、賣屋、貸款規劃，歡迎找我聊聊。</p>
+        <div class="cta">
+          <a class="btn btn-gold" href="tel:0917505303">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+            撥打電話
+          </a>
+          <a class="btn btn-line" href="https://line.me/ti/p/~dnail06" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.3 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
+            加 LINE 好友
+          </a>
+        </div>
+        <div class="hero-meta">
+          <span>電話 <b>0917-505-303</b></span>
+          <span>LINE ID <b>dnail06</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tools" id="tools">
+    <div class="container">
+      <div class="sec-head">
+        <div class="en">TOOLS</div>
+        <h2>免費試算工具</h2>
+        <p>買房前先算清楚，心裡更有底。</p>
+      </div>
+      <div class="grid">
+        <a class="tool" href="loan.html">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></div>
+          <div>
+            <h3>房貸試算</h3>
+            <p>輸入房屋總價，算出貸款金額與每月要繳多少。</p>
+            <span class="go">開始試算 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+        <a class="tool" href="closing-cost.html">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h2M12 18h4M16 15v0"/></svg></div>
+          <div>
+            <h3>成交費用試算</h3>
+            <p>輸入成交總價，算出買賣雙方的仲介費、代書費與各項稅費。</p>
+            <span class="go">開始試算 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="sec-head">
+        <div class="en">CONTACT</div>
+        <h2>聯絡我</h2>
+        <p>有任何買賣房屋的問題，歡迎隨時來電或加 LINE。</p>
+      </div>
+      <div class="card">
+        <div class="info">
+          <h3>戴毅</h3>
+          <div class="co">永義房屋 竹科展益加盟店</div>
+          <div class="rows">
+            <a class="row" href="tel:0917505303">
+              <span class="ri"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span>
+              <span><small>電話</small><strong>0917-505-303</strong></span>
+            </a>
+            <a class="row" href="https://line.me/ti/p/~dnail06" target="_blank" rel="noopener">
+              <span class="ri"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.3 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg></span>
+              <span><small>LINE ID</small><strong>dnail06</strong></span>
+            </a>
+          </div>
+        </div>
+        <div class="qr">
+          <div class="qbox"><img src="images/line-qr.jpg" alt="戴毅 LINE QR Code" width="600" height="600"></div>
+          <p><b>掃描加入 LINE</b>手機用 LINE 掃一掃即可加好友</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fname">戴毅</div>
+    <div class="fco">永義房屋 竹科展益加盟店</div>
+    <p class="legal">
+      <span>經紀業特許字號：府地價字第1140175778號</span>
+      <span>營業員：戴 毅 (114)登字第486520號</span>
+      <span>經紀人：黃勤雯 (106)中市經紀字第01777號</span>
+    </p>
+    <div class="copy">© 戴毅 · 永義房屋 竹科展益加盟店</div>
+  </div>
+</footer>
+
+<div class="dock">
+  <a class="btn btn-gold" href="tel:0917505303">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>撥打電話</a>
+  <a class="btn btn-line" href="https://line.me/ti/p/~dnail06" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.3 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>加 LINE</a>
+</div>
+
+</body>
+</html>
