@@ -17,16 +17,23 @@
   * 中古/成屋(a)：只留交易日期在最早一季登記起日之後者（較舊日期多為預售屋交屋的分件登記）。
   * 單價（萬/坪）：車位價格與面積都有登記時 =(總價-車位價)/(建物面積-車位面積)，否則 = 總價/建物面積
     （與政府公布單價算法一致）。
+  * 新竹市行政區：政府實價資料未標示，改用 tools/hsinchu_city_roads.json（由新竹市門牌坐標資料建立，
+    --rebuild-roads 可重建）依路名與門牌號推算；推算不出者歸「跨區路段」，只計入全市。
   * 地址：去掉縣市與鄉鎮市區，保留路/街/段/巷，門牌號以 30 號為一區間（如 1~30號），不保留樓層與之幾。
 """
 import argparse, csv, datetime as dt, io, json, os, re, statistics, sys, time, urllib.request, zipfile
 
 URL = "https://plvr.land.moi.gov.tw/DownloadSeason?season={s}&type=zip&fileName=lvr_landcsv.zip"
 CITIES = {"o": "新竹市", "j": "新竹縣"}
+UNASSIGNED = "跨區路段"
+CITY_DISTS = ["東區", "北區", "香山區"]
+ROADS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "hsinchu_city_roads.json")
+DOORPLATE_DATASET = "https://data.gov.tw/api/v2/rest/dataset/157547"  # 新竹市門牌坐標資料（新竹市政府民政處）
 DISTRICTS = {
     "新竹縣": ["竹北市", "竹東鎮", "新埔鎮", "關西鎮", "湖口鄉", "新豐鄉", "芎林鄉", "橫山鄉", "北埔鄉", "寶山鄉", "峨眉鄉", "尖石鄉", "五峰鄉"],
-    # 開放資料的新竹市「鄉鎮市區」欄位只有「新竹市」，門牌也多半不含東/北/香山區，故以全市計
-    "新竹市": ["新竹市"],
+    # 開放資料的新竹市「鄉鎮市區」欄位只有「新竹市」，改以門牌推算（見 city_district）；
+    # 推算不出（跨區路段或查無門牌）者歸「跨區路段」，只計入全市
+    "新竹市": ["東區", "北區", "香山區", UNASSIGNED],
 }
 TYPES = ["大樓", "華廈", "公寓", "透天", "套房", "其他"]
 SPECIAL = re.compile(
@@ -168,7 +175,111 @@ def reg_window(z):
     return tuple(int(x) for x in m.groups()) if m else None
 
 
-def build(seasons, cache):
+# ---------------- 新竹市 路名→行政區 對照 ----------------
+ROAD_RE = re.compile(r"^(?P<road>.+?(?:路|街|大道)(?:[一二三四五六七八九十]+段)?)(?:(?P<lane>\d+)巷)?(?:\d+弄)?(?:(?P<no>\d+)(?:[之\-－]\d+)?號)?")
+AREA_RE = re.compile(r"^(?P<road>[^\d]{2,6}?)(?:(?P<lane>\d+)巷)?(?:\d+弄)?(?P<no>\d+)(?:[之\-－]\d+)?號")  # 無路街的地區名，如「美之城８８號」
+SEC_NUM = {"1": "一", "2": "二", "3": "三", "4": "四", "5": "五", "6": "六", "7": "七", "8": "八", "9": "九"}
+
+
+def parse_city_addr(addr):
+    a = addr.translate(FW).replace(" ", "").replace("\u3000", "")
+    explicit = None
+    while True:
+        for p in ("新竹市",) + tuple(CITY_DISTS):
+            if a.startswith(p):
+                if p in CITY_DISTS:
+                    explicit = p
+                a = a[len(p):]
+                break
+        else:
+            break
+    a = re.sub(r"(路|街|大道)(\d)段", lambda m: m.group(1) + SEC_NUM[m.group(2)] + "段", a)  # 中華路5段 → 中華路五段
+    m = ROAD_RE.match(a)
+    if not m or not (m.group("lane") or m.group("no") or re.match(r"^.+?(?:路|街|大道)(?:[一二三四五六七八九十]+段)?$", a)):
+        m = AREA_RE.match(a) or m
+    if not m:
+        return explicit, None, None
+    n = m.group("lane") or m.group("no")
+    return explicit, m.group("road"), int(n) if n else None
+
+
+def build_city_roads(out=ROADS_FILE):
+    """用新竹市政府「新竹市門牌坐標資料」（每個門牌都標示所屬區）建立路名→行政區對照。
+    單一行政區的路段直接對應；跨區路段依門牌號（巷址用巷號）單雙號分邊，整理成號碼區間。"""
+    req = urllib.request.Request(DOORPLATE_DATASET, headers={"User-Agent": "Mozilla/5.0"})
+    meta = json.load(urllib.request.urlopen(req, timeout=60))
+    urls = {}
+    for x in meta["result"]["distribution"]:
+        if x.get("resourceFormat") == "CSV":
+            for d in CITY_DISTS:
+                if "(%s)" % d in x.get("resourceDescription", ""):
+                    urls[d] = x["resourceDownloadUrl"]
+    pts = {}
+    for di, d in enumerate(CITY_DISTS):
+        req = urllib.request.Request(urls[d], headers={"User-Agent": "Mozilla/5.0"})
+        text = urllib.request.urlopen(req, timeout=300).read().decode("utf-8-sig")
+        for r in csv.DictReader(io.StringIO(text)):
+            _, road, n = parse_city_addr(r["地址"])
+            if road and n is not None:
+                pts.setdefault(road, []).append((n, di))
+    single, multi = {}, {}
+    for road, v in pts.items():
+        ds = {d for _, d in v}
+        if len(ds) == 1:
+            single[road] = ds.pop(); continue
+        runs = {}
+        for par in (0, 1):
+            seq = sorted({(n, d) for n, d in v if n % 2 == par})
+            rr = []
+            for n, d in seq:
+                if rr and rr[-1][2] == d:
+                    rr[-1][1] = n
+                else:
+                    rr.append([n, n, d])
+            runs[str(par)] = rr
+        multi[road] = runs
+    data = {"source": "新竹市政府民政處「新竹市門牌坐標資料」 https://data.gov.tw/dataset/157547",
+            "built": dt.date.today().isoformat(), "dists": CITY_DISTS, "single": single, "multi": multi}
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
+    return data
+
+
+def city_district(addr, roads):
+    """回傳 東區/北區/香山區，或 None（跨區路段無法判定、查無路名）。"""
+    explicit, road, n = parse_city_addr(addr)
+    if explicit:
+        return explicit
+    if not road:
+        return None
+    if "\ue000" <= max(road) and any("\ue000" <= ch <= "\uf8ff" for ch in road):
+        # 政府造字（私用區字元）：以萬用字元比對門牌資料中的路名，唯一符合才採用
+        pat = re.compile("^" + "".join("." if "\ue000" <= ch <= "\uf8ff" else re.escape(ch) for ch in road) + "$")
+        cand = [k for k in list(roads["single"]) + list(roads["multi"]) if pat.match(k)]
+        if len(cand) != 1:
+            return None
+        road = cand[0]
+    if road in roads["single"]:
+        return CITY_DISTS[roads["single"][road]]
+    runs = roads["multi"].get(road)
+    if not runs or n is None:
+        return None
+    rr = runs[str(n % 2)]
+    if not rr:
+        return None
+    prev = None
+    for a, b, d in rr:
+        if a <= n <= b:
+            return CITY_DISTS[d]
+        if n < a:
+            if prev is None:
+                return CITY_DISTS[d] if a - n <= 30 else None
+            return CITY_DISTS[d] if prev[2] == d else None  # 夾在兩個不同區的號碼之間 → 無法判定
+        prev = (a, b, d)
+    return CITY_DISTS[prev[2]] if n - prev[1] <= 30 else None
+
+
+def build(seasons, cache, roads):
     dist_list = [[c, d] for c in ("新竹縣", "新竹市") for d in DISTRICTS[c]]
     dist_idx = {(c, d): i for i, (c, d) in enumerate(dist_list)}
     stats = {"raw_a": 0, "raw_b": 0, "kept_a": 0, "kept_b": 0, "land_or_park": 0, "special": 0,
@@ -217,6 +328,8 @@ def build(seasons, cache):
                     else:
                         unit = total / (area * PING); park = 2 if (parea > 0 or "車位" in target) else 0
                     dist = x["鄉鎮市區"].strip()
+                    if city == "新竹市":
+                        dist = city_district(x["土地位置建物門牌"], roads) or UNASSIGNED
                     di = dist_idx.get((city, dist))
                     if di is None:
                         dist_list.append([city, dist]); di = len(dist_list) - 1; dist_idx[(city, dist)] = di
@@ -263,6 +376,7 @@ def main():
     ap.add_argument("--seasons", nargs="*")
     ap.add_argument("--n", type=int, default=4)
     ap.add_argument("--cache", default="/tmp/realprice-cache")
+    ap.add_argument("--rebuild-roads", action="store_true", help="重新下載新竹市門牌資料，重建 tools/hsinchu_city_roads.json")
     ap.add_argument("--out", default=os.path.join(here, "..", "data", "realprice-hsinchu.json"))
     a = ap.parse_args()
     seasons = a.seasons or latest_seasons(a.n, a.cache)
@@ -270,7 +384,11 @@ def main():
     for s in seasons:
         if not fetch(s, a.cache):
             sys.exit("season %s not available" % s)
-    data = build(seasons, a.cache)
+    if a.rebuild_roads or not os.path.exists(ROADS_FILE):
+        build_city_roads()
+    with open(ROADS_FILE, encoding="utf-8") as f:
+        roads = json.load(f)
+    data = build(seasons, a.cache, roads)
     with open(a.out, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
     print("seasons", seasons, "stats", data["meta"]["stats"], "bytes", os.path.getsize(a.out))
