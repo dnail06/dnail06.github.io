@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" href="/icons/favicon.ico" sizes="any">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="戴毅房屋">
 <title>新竹房市實價登錄｜戴毅 永義房屋 竹科展益加盟店</title>
 <meta name="description" content="新竹縣市實價登錄成交行情：各行政區中位單價、價格走勢與近期成交紀錄，資料來自內政部不動產交易實價查詢服務網。">
 <meta name="theme-color" content="#0f1f3d">
@@ -453,6 +461,9 @@ input[type=search]:focus{outline:2px solid rgba(201,162,75,.5);border-color:var(
     D=d; fillDist(); $('dist').value='0'; source(); render();
   }).catch(function(){ $('scope').textContent='資料載入失敗，請重新整理頁面。'; });
 })();
+</script>
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js');});}
 </script>
 </body>
 </html>

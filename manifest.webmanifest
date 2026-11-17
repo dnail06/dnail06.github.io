@@ -1,0 +1,58 @@
+{
+  "name": "戴毅｜永義房屋竹科展益",
+  "short_name": "戴毅房屋",
+  "description": "永義房屋 竹科展益加盟店 戴毅，提供買房能力試算、房貸試算、成交費用試算、新竹實價登錄與賣屋免費估價。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "zh-TW",
+  "dir": "ltr",
+  "theme_color": "#0f1f3d",
+  "background_color": "#F2A448",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "房貸試算",
+      "short_name": "房貸試算",
+      "url": "/loan.html",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "買房能力試算",
+      "short_name": "買房能力",
+      "url": "/afford.html",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "新竹房市實價登錄",
+      "short_name": "實價登錄",
+      "url": "/realprice.html",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "賣屋免費估價",
+      "short_name": "賣屋估價",
+      "url": "/sell.html",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

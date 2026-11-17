@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" href="/icons/favicon.ico" sizes="any">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="戴毅房屋">
 <title>已收到您的估價申請｜戴毅 永義房屋</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0f1f3d">
@@ -49,5 +57,8 @@ p.lead b{color:var(--gold2);font-weight:600}
     <div class="sig"><b>戴毅</b>永義房屋 竹科展益加盟店</div>
   </div>
 </main>
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js');});}
+</script>
 </body>
 </html>

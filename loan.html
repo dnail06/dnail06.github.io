@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" href="/icons/favicon.ico" sizes="any">
+<meta name="theme-color" content="#0f1f3d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="戴毅房屋">
 <title>房貸試算</title>
 <style>
 body{font-family:-apple-system,"PingFang TC","Microsoft JhengHei",sans-serif;background:#f5f6f8;margin:0;padding:20px;color:#222}
@@ -48,4 +57,7 @@ const n=$('note');if(g>0){n.style.display='block';n.textContent=`寬限期 ${g} 
 $('cmp').innerHTML=[20,30,40].map(yy=>{const mm=pmt(loan,apr,yy*12);return `<tr><td>${yy} 年</td><td>${f(mm)}</td><td>${w(mm*yy*12-loan)}</td></tr>`}).join('');
 }
 document.querySelectorAll('input,select').forEach(e=>e.addEventListener('input',calc));calc();
-</script></body></html>
+</script><script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js');});}
+</script>
+</body></html>

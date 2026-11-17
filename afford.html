@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+<link rel="icon" href="/icons/favicon.ico" sizes="any">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="戴毅房屋">
 <title>買房能力試算｜戴毅 永義房屋 竹科展益加盟店</title>
 <meta name="description" content="依家庭收入與自備款，估算您大概買得起多少價位的房子。永義房屋 竹科展益加盟店 戴毅提供免費試算與諮詢。">
 <meta name="theme-color" content="#0f1f3d">
@@ -394,6 +402,9 @@ footer .legal span{display:block}
   });
   calc();
 })();
+</script>
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js');});}
 </script>
 </body>
 </html>
