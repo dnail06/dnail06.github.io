@@ -240,6 +240,8 @@ footer .copy{font-size:11px;margin-top:14px;color:rgba(255,255,255,.35)}
 .tool-data h3{color:#fff}
 .tool-data p{color:rgba(255,255,255,.72)}
 .tool-data .ic{background:linear-gradient(150deg,var(--gold2),var(--gold));color:var(--navy)}
+.tool-list{background:linear-gradient(160deg,#fffdf6,#fbf3dc);border-color:#ead9a8}
+.tool-list .ic{background:linear-gradient(150deg,var(--gold2),var(--gold));color:var(--navy)}
 .tool-sell{background:linear-gradient(160deg,#fffdf6,#fbf3dc);border-color:#ead9a8}
 .tool-sell .ic{background:linear-gradient(150deg,var(--gold2),var(--gold));color:var(--navy)}
 
@@ -274,7 +276,7 @@ footer .copy{font-size:11px;margin-top:14px;color:rgba(255,255,255,.35)}
   .cta .btn{flex:1}
   .tools .grid{grid-template-columns:1fr 1fr}
   .tool{flex-direction:column;padding:32px 28px}
-  .tool-data{grid-column:1/-1;flex-direction:row;align-items:center}
+  .tool-data,.tool-list{grid-column:1/-1;flex-direction:row;align-items:center}
   .card{grid-template-columns:1.35fr 1fr}
   .card .info{padding:40px 38px}
 }
@@ -304,7 +306,7 @@ footer .copy{font-size:11px;margin-top:14px;color:rgba(255,255,255,.35)}
 <header class="topbar">
   <div class="container">
     <a class="brand" href="#top"><span class="mark">毅</span>戴毅｜永義房屋</a>
-    <nav><a href="#tools">試算工具</a><a href="sell.html">賣屋估價</a><a href="#contact">聯絡我</a></nav>
+    <nav><a href="listings.html">精選物件</a><a href="#tools">試算工具</a><a href="sell.html">賣屋估價</a><a href="#contact">聯絡我</a></nav>
   </div>
 </header>
 
@@ -352,10 +354,18 @@ footer .copy{font-size:11px;margin-top:14px;color:rgba(255,255,255,.35)}
     <div class="container">
       <div class="sec-head">
         <div class="en">TOOLS</div>
-        <h2>免費試算與估價</h2>
-        <p>先看買得起多少，再算房貸與成交費用；查實價登錄行情，賣房前也可以先估個價。</p>
+        <h2>精選物件與免費工具</h2>
+        <p>瀏覽公司主推物件；先看買得起多少，再算房貸與成交費用；查實價登錄行情，賣房前也可以先估個價。</p>
       </div>
       <div class="grid">
+        <a class="tool tool-list" href="listings.html">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></div>
+          <div>
+            <h3>新竹竹北 精選物件</h3>
+            <p>公司主推的新竹市、竹北市待售房屋，可依區域、總價、房數篩選，直接聯絡戴毅看房。</p>
+            <span class="go">瀏覽物件 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </a>
         <a class="tool tool-data" href="realprice.html">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/><path d="M4 8l6-4 6 7 5-4"/></svg></div>
           <div>

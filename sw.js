@@ -1,6 +1,6 @@
-/* daiyi-pwa-v3 — network-first for HTML/JSON, cache fallback offline.
+/* daiyi-pwa-v4 — network-first for HTML/JSON, cache fallback offline.
    Does not intercept non-GET or cross-origin requests (FormSubmit POSTs must pass through). */
-const CACHE = 'daiyi-pwa-v3';
+const CACHE = 'daiyi-pwa-v4';
 const PRECACHE = [
   '/',
   '/index.html',
@@ -10,6 +10,8 @@ const PRECACHE = [
   '/thanks.html',
   '/afford.html',
   '/realprice.html',
+  '/listings.html',
+  '/data/listings.json',
   '/manifest.webmanifest',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
